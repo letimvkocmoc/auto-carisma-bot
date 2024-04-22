@@ -10,7 +10,7 @@ async def get_currency_rate(bot: Bot):
     try:
         update_currency_rate()
         currencies = sql.get_currencies()
-        admin_ids = [367150414]
+        admin_ids = [367150414, 588120104]
         for admin in admin_ids:
             await bot.send_message(chat_id=admin, text='Курс валют успешно обновлен ✅\n\n'
                                                        f'📈 Текущий курс валют на <b>{currencies["updated"]}</b>:\n\n' \

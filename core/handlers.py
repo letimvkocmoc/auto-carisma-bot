@@ -8,7 +8,7 @@ from keyboards.inline import set_admin_inline_keyboard
 
 router = Router()
 sql = SQL()
-admin_ids = os.getenv('ADMIN_IDS')
+admin_ids = [588120104, 367150414]
 admin_keyboard = set_admin_inline_keyboard()
 
 
@@ -23,7 +23,7 @@ async def start(message: Message):
 
 @router.callback_query(lambda callback_query: callback_query.data == 'get_currency')
 async def get_currency(callback_query: types.CallbackQuery):
-    if str(callback_query.from_user.id) in admin_ids:
+    if callback_query.from_user.id in admin_ids:
         try:
             currencies = sql.get_currencies()
             exchange_rate_message = f'📈 Текущий курс валют на <b>{currencies['updated']}</b>:\n\n' \
@@ -43,7 +43,7 @@ async def get_currency(callback_query: types.CallbackQuery):
 
 @router.callback_query(lambda callback_query: callback_query.data == 'get_japan_consumptions')
 async def get_japan_consumptions(callback_query: types.CallbackQuery):
-    if str(callback_query.from_user.id) in admin_ids:
+    if callback_query.from_user.id in admin_ids:
         try:
             await callback_query.message.answer(text='Введите стоимость авто в йенах')
 
@@ -55,7 +55,7 @@ async def get_japan_consumptions(callback_query: types.CallbackQuery):
 
 @router.message(lambda message: message.text.isdigit() and int(message.text) > 0)
 async def get_japan_consumptions(message: types.Message):
-    if str(message.from_user.id) in admin_ids:
+    if message.from_user.id in admin_ids:
         try:
             car_price = int(message.text)
             japan_consumptions = calculate_offer(car_price)
