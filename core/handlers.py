@@ -26,7 +26,7 @@ async def get_currency(callback_query: types.CallbackQuery):
     if str(callback_query.from_user.id) in admin_ids:
         try:
             currencies = sql.get_currencies()
-            exchange_rate_message = f'Текущий курс валют на <b>{currencies['updated']}</b>:\n\n' \
+            exchange_rate_message = f'📈 Текущий курс валют на <b>{currencies['updated']}</b>:\n\n' \
                                     f'🇪🇺 Евро: <b>{currencies['currency']['EUR']}</b> ₽\n' \
                                     f'🇺🇸 Доллар США: <b>{currencies['currency']['USD']}</b> ₽\n' \
                                     f'🇯🇵 Японская Иена: <b>{currencies['currency']['JPY']}</b> ₽\n' \
