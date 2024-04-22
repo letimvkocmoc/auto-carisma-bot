@@ -1,6 +1,4 @@
-from datetime import datetime
-
-from sqlalchemy import insert, select, update, func, and_, text, case
+from sqlalchemy import insert, select, update
 from sqlalchemy.orm import Session
 from database.models import engine, currency
 

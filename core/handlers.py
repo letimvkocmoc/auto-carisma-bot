@@ -1,11 +1,9 @@
 import os
-import requests
 from aiogram import Router, types
 from aiogram.filters import Command
 from aiogram.types import Message
 from database.utils import SQL
-from core.utils import calculate_offer, update_currency_rate
-from datetime import datetime
+from core.utils import calculate_offer
 from keyboards.inline import set_admin_inline_keyboard
 
 router = Router()
