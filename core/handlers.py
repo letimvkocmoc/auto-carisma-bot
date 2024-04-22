@@ -27,17 +27,12 @@ async def start(message: Message):
 async def get_currency(callback_query: types.CallbackQuery):
     if str(callback_query.from_user.id) in admin_ids:
         try:
-            currency_rate = update_currency_rate()
-            date_time = currency_rate['updated']
-            eur_rate = currency_rate['EUR']
-            usd_rate = currency_rate['USD']
-            jpy_rate = currency_rate['JPY']
-            cny_rate = currency_rate['CNY']
-            exchange_rate_message = f'Текущий курс валют на <b>{date_time}</b>:\n\n' \
-                                    f'🇪🇺 Евро: <b>{round(eur_rate, 2)}</b> ₽\n' \
-                                    f'🇺🇸 Доллар США: <b>{round(usd_rate, 2)}</b> ₽\n' \
-                                    f'🇯🇵 Японская Иена: <b>{round(jpy_rate, 2)}</b> ₽\n' \
-                                    f'🇨🇳 Китайский Юань: <b>{round(cny_rate, 2)}</b> ₽\n'
+            currencies = sql.get_currencies()
+            exchange_rate_message = f'Текущий курс валют на <b>{currencies['updated']}</b>:\n\n' \
+                                    f'🇪🇺 Евро: <b>{currencies['currency']['EUR']}</b> ₽\n' \
+                                    f'🇺🇸 Доллар США: <b>{currencies['currency']['USD']}</b> ₽\n' \
+                                    f'🇯🇵 Японская Иена: <b>{currencies['currency']['JPY']}</b> ₽\n' \
+                                    f'🇨🇳 Китайский Юань: <b>{currencies['currency']['CNY']}</b> ₽\n'
 
             await callback_query.answer()
             await callback_query.message.edit_text(exchange_rate_message, parse_mode='html')

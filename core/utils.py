@@ -9,8 +9,8 @@ sql = SQL()
 
 def calculate_offer(car_price):
     currencies = sql.get_currencies()
-    jpy_rate = currencies[2][0]
-    usd_rate = currencies[1][0]
+    jpy_rate = currencies['currency']['JPY']
+    usd_rate = currencies['currency']['USD']
     fract = 400
     japan_consumptions = (fract * usd_rate) + (car_price * jpy_rate) + (100000 * jpy_rate) + ((car_price * 0.03) * jpy_rate)
     return round(japan_consumptions)
@@ -31,11 +31,3 @@ def update_currency_rate():
     sql.update(3, rate=round((1 / jpy_rate), 2), updated=date_time_db, last_request=datetime.now())
     sql.update(4, rate=round((1 / cny_rate), 2), updated=date_time_db, last_request=datetime.now())
 
-    result = {
-        'EUR': 1 / eur_rate,
-        'USD': 1 / usd_rate,
-        'JPY': 1 / jpy_rate,
-        'CNY': 1 / cny_rate,
-        'updated': date_time_db.strftime('%H:%M час. %d.%m.%Y')
-    }
-    return result
