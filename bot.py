@@ -20,8 +20,8 @@ dp = Dispatcher()
 dp.include_router(handlers.router)
 
 scheduler = AsyncIOScheduler(timezone='Europe/Moscow')
-scheduler.add_job(get_currency_rate, trigger='cron', hour=10, minute=0, id='currency_update_12', kwargs={'bot': bot})
-scheduler.add_job(get_currency_rate, trigger='cron', hour=18, minute=0, id='currency_update_20', kwargs={'bot': bot})
+scheduler.add_job(get_currency_rate, trigger='cron', hour=10, minute=0, id='currency_update_10', kwargs={'bot': bot})
+scheduler.add_job(get_currency_rate, trigger='cron', hour=18, minute=0, id='currency_update_18', kwargs={'bot': bot})
 
 
 async def main():
