@@ -1,7 +1,12 @@
-def calculate_offer_1(car_price: int):
-    currency_yen = 0.61
-    currency_usd = 100
+from database.utils import SQL
+
+sql = SQL()
+
+
+def calculate_offer(car_price):
+    currencies = sql.get_currencies()
+    jpy_rate = currencies[2][0]
+    usd_rate = currencies[1][0]
     fract = 400
-    japan_consumptions = (fract * currency_usd) + (car_price * currency_yen) + (100000 * currency_yen) + (
-                (car_price * 0.03) * currency_yen)
+    japan_consumptions = (fract * usd_rate) + (car_price * jpy_rate) + (100000 * jpy_rate) + ((car_price * 0.03) * jpy_rate)
     return round(japan_consumptions)
