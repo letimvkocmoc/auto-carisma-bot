@@ -31,3 +31,4 @@ class SQL:
         request = self.session.execute(data)
         result = request.fetchall()
         return result
+
