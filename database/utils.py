@@ -1,6 +1,6 @@
 from sqlalchemy import insert, select, update
 from sqlalchemy.orm import Session
-from database.models import engine, currency
+from database.db import engine, currency, orders
 
 
 class SQL:
@@ -47,4 +47,10 @@ class SQL:
         formatted_result['currency'] = currency_rates
 
         return formatted_result
+
+    def get_orders(self):
+        data = select(orders.c)
+        request = self.session.execute(data)
+        result = request.fetchall()
+        return result
 
