@@ -1,0 +1,56 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+button {
+    background-color: #4CAF50; /* Зеленый цвет */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+
+/* Стили для таблицы */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Светло-серый цвет для четных строк */
+}
+
+tr:hover {
+    background-color: #ddd; /* Серый цвет при наведении на строку */
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <title>Auto Carisma</title>
+</head>
+<body>
+    <header>
+        <h1>Auto Carisma</h1>
+    </header>
+
+    <button>Создать заявку</button>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Клиент</th>
+                    <th>Машина</th>
+                    <th>Картинка</th>
+                    <th>Ссылка</th>
+                    <th>Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order[0] }}</td>
+                    <td>{{ order[1] }}</td>
+                    <td>{{ order[2] }}</td>
+                    <td>{{ order[3] }}</td>
+                    <td>{{ order[4] }}</td>
+                    <td>{{ order[5] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
