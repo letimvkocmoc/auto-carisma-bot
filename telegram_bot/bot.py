@@ -2,7 +2,7 @@ import asyncio
 import logging
 import os
 
-from core import handlers
+from telegram_bot import handlers
 from aiogram import Bot, Dispatcher
 from keyboards.menu import set_menu
 from database.utils import SQL

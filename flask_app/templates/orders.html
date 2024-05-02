@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <title>Auto Carisma</title>
+</head>
+<body>
+    <header>
+        <img src="../static/images/logo.jpg" alt="Лого" width="400" height="auto">
+    </header>
+
+    <button>Создать заявку</button>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Telegram ID клиента</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Номер телефона</th>
+                    <th>Марка авто</th>
+                    <th>Оценка</th>
+                    <th>Стоимость</th>
+                    <th>Статус</th>
+                    <th>Фото</th>
+                    <th>Ссылка на аукцион</th>
+                    <th>Оплачен</th>
+                    <th>Редактировать</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order[0] }}</td> <! -- № -->
+                    <td>{{ order[1] }}</td> <! -- Telegram ID клиента -->
+                    <td>{{ order[2] }}</td> <! -- Имя -->
+                    <td>{{ order[3] }}</td> <! -- Фамилия -->
+                    <td>{{ order[4] }}</td> <! -- Номер телефона -->
+                    <td>{{ order[5] }}</td> <! -- Марка авто -->
+                    <td>{{ order[6] }}</td> <! -- Оценка -->
+                    <td>{{ order[7] }}</td> <! -- Стоимость -->
+                    <td>{{ order[8] }}</td> <! -- Статус -->
+                    <td style="text-align: center;"><img src="{{ order[9] }}" alt="Фото" style="width: 150px; height: auto; border-radius: 5px"></td>
+                    <td><a href="{{ order[10] }}"><img src="../static/images/auction.png" alt="Аукцион" width="50" height="50"></a></td>
+                    <td>{% if order[11] %}<img src="../static/images/done.png" alt="Оплачен" width="50" height="50">{% else %}<img src="../static/images/false.png" alt="Не оплачен" width="50" height="50">{% endif %}</td>
+                    <td class="edit_icon">
+                        <a href="/edit/{{ order[0] }}">
+                            <img src="../static/images/edit_icon.png" width="50" height="50" alt="Редактировать">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

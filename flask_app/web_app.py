@@ -1,7 +1,11 @@
 from flask import Flask, render_template
+from database.utils import SQL
 
 
 app = Flask(__name__)
+
+
+sql = SQL()
 
 
 @app.route('/')
@@ -9,9 +13,10 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/core')
+@app.route('/orders')
 def core():
-    return render_template('core.html')
+    orders = sql.get_orders()
+    return render_template('orders.html', orders=orders)
 
 
 if __name__ == '__main__':

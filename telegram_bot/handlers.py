@@ -1,4 +1,3 @@
-import os
 from aiogram import Router, types
 from aiogram.filters import Command
 from aiogram.types import Message
@@ -7,7 +6,6 @@ from core.utils import calculate_offer
 from keyboards.inline import set_admin_inline_keyboard
 
 router = Router()
-sql = SQL()
 admin_ids = [588120104, 367150414]
 admin_keyboard = set_admin_inline_keyboard()
 
@@ -21,24 +19,23 @@ async def start(message: Message):
         await message.answer(f'Произошла ошибка: {e}.')
 
 
-@router.callback_query(lambda callback_query: callback_query.data == 'get_currency')
-async def get_currency(callback_query: types.CallbackQuery):
-    if callback_query.from_user.id in admin_ids:
-        try:
-            currencies = sql.get_currencies()
-            exchange_rate_message = f'📈 Текущий курс валют на <b>{currencies['updated']}</b>:\n\n' \
-                                    f'🇪🇺 Евро: <b>{currencies['currency']['EUR']}</b> ₽\n' \
-                                    f'🇺🇸 Доллар США: <b>{currencies['currency']['USD']}</b> ₽\n' \
-                                    f'🇯🇵 Японская Иена: <b>{currencies['currency']['JPY']}</b> ₽\n' \
-                                    f'🇨🇳 Китайский Юань: <b>{currencies['currency']['CNY']}</b> ₽\n'
-
-            await callback_query.answer()
-            await callback_query.message.edit_text(exchange_rate_message, parse_mode='html')
-
-        except Exception as e:
-            await callback_query.answer(f'Произошла ошибка при получении текущего курса валют: {e}.')
-    else:
-        await callback_query.message.edit_text('Вы не админ.')
+# @router.callback_query(lambda callback_query: callback_query.data == 'get_currency')
+# async def get_currency(callback_query: types.CallbackQuery):
+#     if callback_query.from_user.id in admin_ids:
+#         try:
+#             exchange_rate_message = f'📈 Текущий курс валют на <b>{currencies["updated"]}</b>:\n\n' \
+#                                     f'🇪🇺 Евро: <b>{currencies["currency"]["EUR"]}</b> ₽\n' \
+#                                     f'🇺🇸 Доллар США: <b>{currencies["currency"]["USD"]}</b> ₽\n' \
+#                                     f'🇯🇵 Японская Иена: <b>{currencies["currency"]["JPY"]}</b> ₽\n' \
+#                                     f'🇨🇳 Китайский Юань: <b>{currencies["currency"]["CNY"]}</b> ₽\n'
+#
+#             await callback_query.answer()
+#             await callback_query.message.edit_text(exchange_rate_message, parse_mode='html')
+#
+#         except Exception as e:
+#             await callback_query.answer(f'Произошла ошибка при получении текущего курса валют: {e}.')
+#     else:
+#         await callback_query.message.edit_text('Вы не админ.')
 
 
 @router.callback_query(lambda callback_query: callback_query.data == 'get_japan_consumptions')

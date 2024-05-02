@@ -1,19 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+
 /* Общие стили */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', ital;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #333;
+    background-color: #000000; /* Близкий к фиолетовому цвет */
     color: #fff;
     padding: 10px;
     text-align: center;
+    font-family: 'Open Sans', ital;
+    cursor: default;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 5); /* Тень */
 }
 
 button {
-    background-color: #4CAF50; /* Зеленый цвет */
+    background-color: #6A5ACD; /* Близкий к фиолетовому цвет */
     border: none;
     color: white;
     padding: 10px 20px;
@@ -24,33 +30,36 @@ button {
     margin: 10px;
     cursor: pointer;
     border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Тень */
+    font-family: 'Open Sans', ital;
 }
 
 button:hover {
-    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+    background-color: #836FFF; /* Фиолетовый цвет при наведении */
 }
 
 /* Стили для таблицы */
 table {
-    border-collapse: collapse;
+    border-collapse: unset;
     width: 100%;
+    font-family: 'Open Sans', ital;
 }
 
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
+    cursor: default;
+    border-radius: 5px; /* Закругленные края */
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); /* Тень */
 }
 
 th {
-    background-color: #4CAF50; /* Зеленый цвет */
+    background-color: #6A5ACD; /* Близкий к фиолетовому цвет */
     color: white;
 }
 
 tr:nth-child(even) {
-    background-color: #f2f2f2; /* Светло-серый цвет для четных строк */
+    background-color: rgba(231, 217, 255, 0.3); /* Светло-серый цвет для четных строк */
 }
 
-tr:hover {
-    background-color: #ddd; /* Серый цвет при наведении на строку */
-}
