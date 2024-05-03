@@ -14,10 +14,11 @@
     <button>Создать заявку</button>
 
     <div>
-        <table>
+        <div class="container">
+            <table>
             <thead>
                 <tr>
-                    <th>№</th>
+                    <th class="id">№</th>
                     <th>Telegram ID клиента</th>
                     <th>Имя</th>
                     <th>Фамилия</th>
@@ -29,7 +30,7 @@
                     <th>Фото</th>
                     <th>Ссылка на аукцион</th>
                     <th>Оплачен</th>
-                    <th>Редактировать</th>
+                    <th class="edit">Редактировать</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,6 +57,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        </div>
     </div>
 </body>
 </html>
