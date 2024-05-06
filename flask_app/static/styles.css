@@ -18,7 +18,7 @@ header {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 5); /* Тень */
 }
 
-button {
+button, .button {
     background-color: #6A5ACD; /* Близкий к фиолетовому цвет */
     border: none;
     color: white;
@@ -34,7 +34,7 @@ button {
     font-family: 'Open Sans', ital;
 }
 
-button:hover {
+button:hover, .button:hover {
     background-color: #836FFF; /* Фиолетовый цвет при наведении */
 }
 

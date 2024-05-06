@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <title>Auto Carisma</title>
+</head>
+<body>
+    <header>
+        <img src="../static/images/logo.jpg" alt="Лого" width="400" height="auto">
+    </header>
+
+    <a href="./orders" class="button">Заявки</a>
+
+    <div class="container" style="max-width: 800px; text-align: center; margin-left: auto; margin-right: auto;">
+        <div class="calculator-form">
+            <table>
+                <tbody>
+                <tr>
+                    <td>Автомобиль ввозит</td>
+                    <td>
+                        <select>
+                            <option value="1">Физическое лицо (для личного пользования)</option>
+                            <option value="2">Физическое лицо (для перепродажи)</option>
+                            <option value="3">Юридическое лицо</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Возраст автомобиля</td>
+                    <td>
+                        <select>
+                            <option value="0-3">до 3 лет</option>
+                            <option value="3-5">от 3 до 5 лет</option>
+                            <option value="5-7">от 5 до 7 лет</option>
+                            <option value="3">более 7</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Тип двигателя</td>
+                    <td>
+                        <select>
+                            <option value="1">Бензиновый</option>
+                            <option value="2">Дизельный</option>
+                            <option value="3">Гибридный</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Мощность двигателя</td>
+                    <td>
+                        <input type="text"><select>
+                        <option value="1">ЛС</option>
+                        <option value="2">кВт</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Объем двигателя</td>
+                    <td>
+                        <input type="text">
+                        <span>см3 (1 л = 1000 см3)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Стоимость автомобиля</td>
+                    <td>
+                        <input type="text"><select>
+                        <option value="CNY">Китайский Юань</option>
+                        <option value="EUR">Евро</option>
+                        <option value="JPY">Японская Иена</option>
+                        <option value="USD">Доллар США</option>
+                    </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div>
+                <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span>
+                <span> | </span>
+                <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span>
+                <span> | </span>
+                <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span>
+                <span> | </span>
+                <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span>
+            </div>
+            <button>Рассчитать</button>
+        </div>
+    </div>
+</body>

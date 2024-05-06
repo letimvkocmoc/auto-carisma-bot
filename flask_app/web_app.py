@@ -19,5 +19,11 @@ def core():
     return render_template('orders.html', orders=orders)
 
 
+@app.route('/calc')
+def calc():
+    currencies = sql.get_currencies()
+    return render_template('calculator.html', currency=currencies)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
