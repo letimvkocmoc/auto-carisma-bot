@@ -30,4 +30,3 @@ def update_currency_rate():
     sql.update(2, rate=round((1 / usd_rate), 2), updated=date_time_db, last_request=datetime.now())
     sql.update(3, rate=round((1 / jpy_rate), 2), updated=date_time_db, last_request=datetime.now())
     sql.update(4, rate=round((1 / cny_rate), 2), updated=date_time_db, last_request=datetime.now())
-
