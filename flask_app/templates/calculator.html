@@ -6,21 +6,23 @@
     <link rel="stylesheet" type="text/css" href="../static/styles.css">
     <title>Auto Carisma</title>
 </head>
-<body>
-    <header>
-        <img src="../static/images/logo.jpg" alt="Лого" width="400" height="auto">
-    </header>
-
-    <a href="./orders" class="button">Заявки</a>
-
-    <div class="container" style="max-width: 800px; text-align: center; margin-left: auto; margin-right: auto;">
+<header>
+    <img src="../static/images/logo.jpg" alt="Лого" width="400" height="auto">
+</header>
+<div class="main">
+    <div class="deliner"></div>
+    <div class="menu">
+        <a href="./orders" class="button">Заявки</a>
+    </div>
+    <div class="deliner"></div>
+    <div class="calculator-form-main">
         <div class="calculator-form">
-            <table>
+            <table class="calculator">
                 <tbody>
                 <tr>
                     <td>Автомобиль ввозит</td>
                     <td>
-                        <select>
+                        <select id="owner">
                             <option value="1">Физическое лицо (для личного пользования)</option>
                             <option value="2">Физическое лицо (для перепродажи)</option>
                             <option value="3">Юридическое лицо</option>
@@ -31,7 +33,7 @@
                 <tr>
                     <td>Возраст автомобиля</td>
                     <td>
-                        <select>
+                        <select id="age">
                             <option value="0-3">до 3 лет</option>
                             <option value="3-5">от 3 до 5 лет</option>
                             <option value="5-7">от 5 до 7 лет</option>
@@ -42,7 +44,7 @@
                 <tr>
                     <td>Тип двигателя</td>
                     <td>
-                        <select>
+                        <select id="engine">
                             <option value="1">Бензиновый</option>
                             <option value="2">Дизельный</option>
                             <option value="3">Гибридный</option>
@@ -52,42 +54,115 @@
                 <tr>
                     <td>Мощность двигателя</td>
                     <td>
-                        <input type="text"><select>
-                        <option value="1">ЛС</option>
-                        <option value="2">кВт</option>
-                    </select>
+                        <input type="text" id="power">
+                        <select id="power_unit">
+                            <option value="1">ЛС</option>
+                            <option value="2">кВт</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Объем двигателя</td>
                     <td>
-                        <input type="text">
-                        <span>см3 (1 л = 1000 см3)</span>
+                        <input type="text" id="value">
+                        <span>см<sup>3</sup> (1 л = 1000 см<sup>3</sup>)</span>
                     </td>
                 </tr>
                 <tr>
                     <td>Стоимость автомобиля</td>
                     <td>
-                        <input type="text"><select>
-                        <option value="CNY">Китайский Юань</option>
-                        <option value="EUR">Евро</option>
-                        <option value="JPY">Японская Иена</option>
-                        <option value="USD">Доллар США</option>
-                    </select>
+                        <input type="text" id="price">
+                        <select id="curr">
+                            <option value="EUR">Евро</option>
+                            <option value="USD">Доллар США</option>
+                            <option value="JPY">Японская Иена</option>
+                            <option value="CNY">Китайский Юань</option>
+                        </select>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <div>
-                <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span>
-                <span> | </span>
-                <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span>
-                <span> | </span>
-                <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span>
-                <span> | </span>
-                <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span>
+            <div class="notice">
+                <span style="text-align: left; font-size: 12px; margin: 0px;">*рассчет производится с учетом расходов по Японии</span><br><br>
+            </div>
+            <div class="currency">
+                <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
+                <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
+                <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
+                <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
             </div>
             <button>Рассчитать</button>
         </div>
+        <div id="result" class="result">
+            <h3>Рассчет</h3>
+            <p>Сбор:</p>
+            <p>Налог:</p>
+            <p>Налоговая ставка:</p>
+            <p>Сбор утилизации:</p>
+            <p>Сбор утилизации калькуляция:</p>
+            <p>Итого:</p>
+            <p>Итог 2:</p>
+
+
+        </div>
     </div>
-</body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector("button").addEventListener("click", function () {
+                var formData = new FormData();
+                formData.append("owner", document.getElementById("owner").value);
+                formData.append("age", document.getElementById("age").value);
+                formData.append("engine", document.getElementById("engine").value);
+                formData.append("power", document.getElementById("power").value);
+                formData.append("power_unit", document.getElementById("power_unit").value);
+                formData.append("value", document.getElementById("value").value);
+                formData.append("price", document.getElementById("price").value);
+                formData.append("curr", document.getElementById("curr").value);
+                formData.append("isEmbed", "1");
+                formData.append("lang", "ru");
+
+                fetch("https://calcus.ru/calculate/Customs", {
+                    method: "POST",
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log("Request successful!");
+                            return response.json(); // Парсим ответ в формате JSON
+                        }
+                        throw new Error("Request failed with status " + response.status);
+                    })
+                    .then(data => {
+                        console.log("Response content:");
+                        console.log(data);
+                        // Проверяем, существует ли уже блок result
+                        var resultBlock = document.getElementById("result");
+                        if (!resultBlock) {
+                            // Если блока result нет, создаем его
+                            resultBlock = document.createElement("div");
+                            resultBlock.id = "result";
+                            resultBlock.className = "result";
+                            document.body.appendChild(resultBlock); // Добавляем на страницу
+                        }
+
+                        // Формируем HTML для отображения результатов
+                        var resultHTML = `
+                    <h3>Рассчет</h3>
+                    <p>Сбор: ${data.sbor} ₽</p>
+                    <p>Налог: ${data.tax} ₽</p>
+                    <p>Налоговая ставка: ${data.tax_k} ₽</p>
+                    <p>Сбор утилизации: ${data.util} ₽</p>
+                    <p>Сбор утилизации калькуляция: ${data.util_k} ₽</p>
+                    <p>Итого: ${data.total} ₽</p>
+                    <p><b>Итого 2: ${data.total2} ₽</b></p>
+                `;
+                        // Обновляем содержимое блока result
+                        resultBlock.innerHTML = resultHTML;
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                    });
+            });
+        });
+    </script>
+</div>

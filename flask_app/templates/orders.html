@@ -10,12 +10,14 @@
     <header>
         <img src="../static/images/logo.jpg" alt="Лого" width="400" height="auto">
     </header>
-
-    <a href="./new_order" class="button">Создать заявку</a>
-    <a href="./calc" class="button">Калькулятор</a>
-
-    <div>
+    <div class="main">
+        <div class="deliner"></div>
+        <div class="menu">
+            <a href="./new_order" class="button">Создать заявку</a>
+            <a href="./calc" class="button">Калькулятор</a>
+        </div>
         <div class="container">
+            <div class="deliner"></div>
             <table>
             <thead>
                 <tr>
@@ -47,11 +49,11 @@
                     <td>{{ order[7] }}</td> <! -- Стоимость -->
                     <td>{{ order[8] }}</td> <! -- Статус -->
                     <td style="text-align: center;"><img src="{{ order[9] }}" alt="Фото" style="width: 150px; height: auto; border-radius: 5px"></td>
-                    <td><a href="{{ order[10] }}"><img src="../static/images/auction.png" alt="Аукцион" width="50" height="50"></a></td>
-                    <td>{% if order[11] %}<img src="../static/images/done.png" alt="Оплачен" width="50" height="50">{% else %}<img src="../static/images/false.png" alt="Не оплачен" width="50" height="50">{% endif %}</td>
+                    <td><a href="{{ order[10] }}"><img src="../static/images/auction.png" alt="Аукцион" width="30" height="30"></a></td>
+                    <td>{% if order[11] %}<img src="../static/images/done.png" alt="Оплачен" width="30" height="30">{% else %}<img src="../static/images/false.png" alt="Не оплачен" width="30" height="30">{% endif %}</td>
                     <td class="edit_icon">
                         <a href="/edit/{{ order[0] }}">
-                            <img src="../static/images/edit_icon.png" width="50" height="50" alt="Редактировать">
+                            <img src="../static/images/edit_icon.png" width="30" height="30" alt="Редактировать">
                         </a>
                     </td>
                 </tr>
