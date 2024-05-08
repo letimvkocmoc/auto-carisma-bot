@@ -16,164 +16,227 @@
     </div>
     <div class="deliner"></div>
     <div class="calculator-form-main">
-        <div class="calculator-form">
-            <table class="calculator">
+        <div class="new-order-form">
+            <table class="new_order_table">
                 <tbody>
                 <tr>
-                    <td>Автомобиль ввозит</td>
+                    <td>Имя</td>
                     <td>
-                        <select id="owner">
-                            <option value="1">Физическое лицо (для личного пользования)</option>
-                            <option value="2">Физическое лицо (для перепродажи)</option>
-                            <option value="3">Юридическое лицо</option>
-
+                        <input type="text" id="client_first_name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Фамилия</td>
+                    <td>
+                        <input type="text" id="client_last_name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Telegram ID</td>
+                    <td>
+                        <input type="text" id="client_id">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Телефон</td>
+                    <td>
+                        <input type="text" id="client_phonenumber">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Марка авто</td>
+                    <td>
+                        <input type="text" id="model_auto">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Оценка</td>
+                    <td>
+                        <input type="text" id="rating">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Стоимость</td>
+                    <td>
+                        <input type="text" id="auto_price">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Статус</td>
+                    <td>
+                        <select id="status">
+                            <option value="В обработке">В обработке</option>
+                            <option value="Подбор авто">Подбор авто</option>
+                            <option value="Розыгрыш на аукционе">Розыгрыш на аукционе</option>
+                            <option value="В пути">В пути</option>
+                            <option value="Процесс растаможки">Процесс растаможки</option>
+                            <option value="Доставлено">Доставлено</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
-                    <td>Возраст автомобиля</td>
+                    <td>Фото (ссылка)</td>
                     <td>
-                        <select id="age">
-                            <option value="0-3">до 3 лет</option>
-                            <option value="3-5">от 3 до 5 лет</option>
-                            <option value="5-7">от 5 до 7 лет</option>
-                            <option value="3">более 7</option>
-                        </select>
+                        <input type="text" id="picture">
                     </td>
                 </tr>
                 <tr>
-                    <td>Тип двигателя</td>
+                    <td>Ссылка на аукцион</td>
                     <td>
-                        <select id="engine">
-                            <option value="1">Бензиновый</option>
-                            <option value="2">Дизельный</option>
-                            <option value="3">Гибридный</option>
-                        </select>
+                        <input type="text" id="link">
                     </td>
                 </tr>
                 <tr>
-                    <td>Мощность двигателя</td>
+                    <td>Оплачен</td>
                     <td>
-                        <input type="text" id="power">
-                        <select id="power_unit">
-                            <option value="1">ЛС</option>
-                            <option value="2">кВт</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Объем двигателя</td>
-                    <td>
-                        <input type="text" id="value">
-                        <span>см<sup>3</sup> (1 л = 1000 см<sup>3</sup>)</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Стоимость автомобиля</td>
-                    <td>
-                        <input type="text" id="price">
-                        <select id="curr">
-                            <option value="EUR">Евро</option>
-                            <option value="USD">Доллар США</option>
-                            <option value="JPY">Японская Иена</option>
-                            <option value="CNY">Китайский Юань</option>
+                        <select id="is_paid">
+                            <option value="True">Оплачен</option>
+                            <option value="False">Не оплачен</option>
                         </select>
                     </td>
                 </tr>
                 </tbody>
             </table>
-            <div class="notice">
-                <span style="text-align: left; font-size: 12px; margin: 0px;">*рассчет производится с учетом расходов по Японии</span><br><br>
-            </div>
-            <div class="currency">
-                <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
-                <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
-                <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
-                <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
-            </div>
-            <button>Рассчитать</button>
+            <button>Создать заявку</button>
         </div>
+        <form class="calculator-form" action="/calculate" method="POST" id="calculator-form">
+    <table class="calculator">
+        <tbody>
+            <tr>
+                <td>Автомобиль ввозит</td>
+                <td>
+                    <select name="owner">
+                        <option value="1">Физическое лицо (для личного пользования)</option>
+                        <option value="2">Физическое лицо (для перепродажи)</option>
+                        <option value="3">Юридическое лицо</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Возраст автомобиля</td>
+                <td>
+                    <select name="age">
+                        <option value="0-3">до 3 лет</option>
+                        <option value="3-5">от 3 до 5 лет</option>
+                        <option value="5-7">от 5 до 7 лет</option>
+                        <option value="3">более 7</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Тип двигателя</td>
+                <td>
+                    <select name="engine">
+                        <option value="1">Бензиновый</option>
+                        <option value="2">Дизельный</option>
+                        <option value="3">Гибридный</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Мощность двигателя</td>
+                <td>
+                    <input type="text" name="power">
+                    <select name="power_unit">
+                        <option value="1">ЛС</option>
+                        <option value="2">кВт</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Объем двигателя</td>
+                <td>
+                    <input type="text" name="value">
+                    <span>см<sup>3</sup> (1 л = 1000 см<sup>3</sup>)</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Стоимость автомобиля</td>
+                <td>
+                    <input type="text" name="price">
+                    <select name="curr">
+                        <option value="EUR">Евро</option>
+                        <option value="USD">Доллар США</option>
+                        <option value="JPY">Японская Иена</option>
+                        <option value="CNY">Китайский Юань</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="notice">
+        <span style="text-align: left; font-size: 12px; margin: 0px;">*рассчет производится с учетом расходов по Японии</span><br><br>
+    </div>
+    <div class="currency">
+        <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
+        <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
+        <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
+        <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
+    </div>
+    <button type="button" onclick="submitForm()">Рассчитать</button>
+</form>
         <div id="result" class="result">
-            <h3>Рассчет</h3>
-            <p>Сбор:</p>
-            <p>Налог:</p>
-            <p>Налоговая ставка:</p>
-            <p>Сбор утилизации:</p>
-            <p>Сбор утилизации калькуляция:</p>
-            <p>Итого:</p>
-            <p>Итог 2:</p>
-        </div>
-        <div id="result2" class="result">
-            <h3>Рассчет</h3>
-            <p>Сбор:</p>
-            <p>Налог:</p>
-            <p>Налоговая ставка:</p>
-            <p>Сбор утилизации:</p>
-            <p>Сбор утилизации калькуляция:</p>
-            <p>Итого:</p>
-            <p>Итог 2:</p>
-        </div>
+    <table class="result">
+        <tbody>
+            <tr>
+                <td>Сбор</td>
+                <td id="sbor"> </td>
+            </tr>
+            <tr>
+                <td>Налог</td>
+                <td id="tax"> </td>
+            </tr>
+            <tr>
+                <td>Налоговая ставка</td>
+                <td id="tax_k"> </td>
+            </tr>
+            <tr>
+                <td>Сбор утилизации</td>
+                <td id="util"> </td>
+            </tr>
+            <tr>
+                <td>Сбор утилизации калькуляция</td>
+                <td id="util_k"> </td>
+            </tr>
+            <tr>
+                <td>Итого</td>
+                <td id="total"> </td>
+            </tr>
+            <tr>
+                <td>Итого 2</td>
+                <td id="total2"> </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
     </div>
 </div>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelector("button").addEventListener("click", function () {
-                var formData = new FormData();
-                formData.append("owner", document.getElementById("owner").value);
-                formData.append("age", document.getElementById("age").value);
-                formData.append("engine", document.getElementById("engine").value);
-                formData.append("power", document.getElementById("power").value);
-                formData.append("power_unit", document.getElementById("power_unit").value);
-                formData.append("value", document.getElementById("value").value);
-                formData.append("price", document.getElementById("price").value);
-                formData.append("curr", document.getElementById("curr").value);
-                formData.append("isEmbed", "1");
-                formData.append("lang", "ru");
-
-                fetch("https://calcus.ru/calculate/Customs", {
-                    method: "POST",
-                    body: formData
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            console.log("Request successful!");
-                            return response.json(); // Парсим ответ в формате JSON
-                        }
-                        throw new Error("Request failed with status " + response.status);
-                    })
-                    .then(data => {
-                        console.log("Response content:");
-                        console.log(data);
-                        // Проверяем, существует ли уже блок result
-                        var resultBlock = document.getElementById("result");
-                        if (!resultBlock) {
-                            // Если блока result нет, создаем его
-                            resultBlock = document.createElement("div");
-                            resultBlock.id = "result";
-                            resultBlock.className = "result";
-                            document.body.appendChild(resultBlock); // Добавляем на страницу
-                        }
-
-                        // Формируем HTML для отображения результатов
-                        var resultHTML = `
-                    <h3>Рассчет</h3>
-                    <p>Сбор: ${data.sbor} ₽</p>
-                    <p>Налог: ${data.tax} ₽</p>
-                    <p>Налоговая ставка: ${data.tax_k} ₽</p>
-                    <p>Сбор утилизации: ${data.util} ₽</p>
-                    <p>Сбор утилизации калькуляция: ${data.util_k} ₽</p>
-                    <p>Итого: ${data.total} ₽</p>
-                    <p><b>Итого 2: ${data.total2} ₽</b></p>
-                `;
-                        // Обновляем содержимое блока result
-                        resultBlock.innerHTML = resultHTML;
-                    })
-                    .catch(error => {
-                        console.error("Error:", error);
-                    });
-            });
-        });
-    </script>
+<script>
+    function submitForm() {
+    var form = document.getElementById("calculator-form");
+    var formData = new FormData(form);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/calculate", true);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                document.getElementById("sbor").innerText = response.sbor;
+                document.getElementById("tax").innerText = response.tax;
+                document.getElementById("tax_k").innerHTML = response.tax_k;
+                document.getElementById("util").innerText = response.util;
+                document.getElementById("util_k").innerText = response.util_k;
+                document.getElementById("total").innerText = response.total;
+                document.getElementById("total2").innerText = response.total2;
+            } else {
+                console.error("Error:", xhr.statusText);
+            }
+        }
+    };
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify(Object.fromEntries(formData)));
+}
+</script>
 <footer>
     <div class="footer">
         <span>Разработчик: korneev.dev</span>

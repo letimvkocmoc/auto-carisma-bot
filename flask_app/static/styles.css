@@ -106,7 +106,6 @@ table.calculator {
 }
 
 table.calculator td {
-    padding: 10px;
     text-align: left;
 }
 
@@ -116,35 +115,41 @@ table.calculator td {
     padding-bottom: 10px;
 }
 
+.new-order-form {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 5px;
+    width: 600px;
+    height: 700px;
+    padding: 15px;
+    margin: 10px;
+}
+
+table.new_order_table {
+    margin: 10px auto;
+}
+
+table.new_order_table td {
+    text-align: left;
+}
+
 .calculator-form {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 5px;
     width: 600px;
     height: 585px;
-    justify-content: left;
     padding: 15px;
     margin: 10px;
-
+    justify-content: center;
 }
 
 .result {
     margin: 10px;
-    justify-content: center;
     background-color: rgba(255, 255, 255, 0.9);
     width: 600px;
     height: 585px;
     border-radius: 5px;
     padding: 15px;
-}
 
-.result2 {
-    margin: 10px;
-    justify-content: right;
-    background-color: rgba(255, 255, 255, 0.9);
-    width: auto;
-    height: 600px;
-    border-radius: 5px;
-    padding: 15px;
 }
 
 input[type="text"],

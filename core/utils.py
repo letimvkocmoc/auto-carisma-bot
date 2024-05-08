@@ -30,3 +30,24 @@ def update_currency_rate():
     sql.update(2, rate=round((1 / usd_rate), 2), updated=date_time_db, last_request=datetime.now())
     sql.update(3, rate=round((1 / jpy_rate), 2), updated=date_time_db, last_request=datetime.now())
     sql.update(4, rate=round((1 / cny_rate), 2), updated=date_time_db, last_request=datetime.now())
+
+
+def get_calculation(owner, age, engine, power, power_unit, value, price, curr):
+
+    url = "https://calcus.ru/calculate/Customs"
+
+    form_data = {
+        "owner": owner,
+        "age": age,
+        "engine": engine,
+        "power": power,
+        "power_unit": power_unit,
+        "value": value,
+        "price": price,
+        "curr": curr,
+        "isEmbed": "1",
+        "lang": "ru"
+    }
+
+    response = requests.post(url, data=form_data)
+    return response.json()
