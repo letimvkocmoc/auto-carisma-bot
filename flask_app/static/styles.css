@@ -1,12 +1,22 @@
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent
+}
+
+html {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
 body {
     font-family: 'Arial', ital, serif;
     padding: 0;
-    max-width: 1600px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
 }
 
 .main {
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 5); /* Тень */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 5);
     height: 100%;
     background-color: black;
 }
@@ -21,16 +31,16 @@ body {
 }
 
 header {
-    background-color: #000000; /* Близкий к фиолетовому цвет */
+    background-color: #000000;
     color: #fff;
     padding: 10px;
     text-align: center;
     cursor: default;
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 5); /* Тень */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 5);
 }
 
 button, .button {
-    background-color: #000000; /* Близкий к фиолетовому цвет */
+    background-color: #000000;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -41,25 +51,25 @@ button, .button {
     margin: 10px;
     cursor: pointer;
     border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Тень */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 button:hover, .button:hover {
-    background-color: #282828; /* Фиолетовый цвет при наведении */
+    background-color: #282828;
 }
 
 .container {
     max-width: 100%;
     background-color: black;
+    padding-bottom: 5px;
 }
 
-/* Стили для таблицы */
 table {
     border-collapse: collapse;
     box-sizing: border-box;
-    margin: 10px auto;
+    margin: 15px;
     font-size: 14px;
-    width: 99%;
+    width: 98%;
 }
 
 th, td {
@@ -67,8 +77,7 @@ th, td {
     padding: 8px;
     text-align: center;
     cursor: default;
-    border-radius: 0px; /* Закругленные края */
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2); /* Тень */
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
     color: white;
     background-color: white;
 }
@@ -84,11 +93,16 @@ td {
 }
 
 tr:nth-child(even) {
-    background-color: rgba(231, 217, 255, 0.3); /* Светло-серый цвет для четных строк */
+    background-color: rgba(231, 217, 255, 0.3);
 }
 
 .currency {
     color: black;
+    margin: -10px 5px;
+}
+
+table.calculator {
+    margin: 10px auto;
 }
 
 table.calculator td {
@@ -98,25 +112,37 @@ table.calculator td {
 
 .calculator-form-main {
     display: flex;
-    margin: 10px auto auto;
+    margin: 10px 15px 0 0;
+    padding-bottom: 10px;
 }
 
 .calculator-form {
-    margin: 10px auto auto;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 5px;
-    width: 750px;
+    width: 600px;
+    height: 585px;
     justify-content: left;
     padding: 15px;
+    margin: 10px;
 
 }
 
 .result {
-    margin: 10px auto auto;
+    margin: 10px;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 600px;
+    height: 585px;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.result2 {
+    margin: 10px;
     justify-content: right;
     background-color: rgba(255, 255, 255, 0.9);
-    width: 750px;
-    height: 575px;
+    width: auto;
+    height: 600px;
     border-radius: 5px;
     padding: 15px;
 }
@@ -135,6 +161,13 @@ select {
 }
 
 .notice {
-    margin: -5px 5px 5px;
+    margin: 5px 5px 5px;
     text-align: left;
+}
+
+footer {
+    color: white;
+    background-color: black;
+    text-align: center;
+    height: 50px;
 }
