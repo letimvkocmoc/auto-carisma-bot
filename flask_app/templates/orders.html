@@ -22,9 +22,9 @@
             <thead>
                 <tr>
                     <th class="id">№</th>
-                    <th>Telegram ID клиента</th>
                     <th>Имя</th>
                     <th>Фамилия</th>
+                    <th>Telegram ID клиента</th>
                     <th>Номер телефона</th>
                     <th>Марка авто</th>
                     <th>Оценка</th>
@@ -40,9 +40,9 @@
                 {% for order in orders %}
                 <tr>
                     <td>{{ order[0] }}</td> <! -- № -->
-                    <td>{{ order[1] }}</td> <! -- Telegram ID клиента -->
                     <td>{{ order[2] }}</td> <! -- Имя -->
                     <td>{{ order[3] }}</td> <! -- Фамилия -->
+                    <td>{{ order[1] }}</td> <! -- Telegram ID -->
                     <td>{{ order[4] }}</td> <! -- Номер телефона -->
                     <td>{{ order[5] }}</td> <! -- Марка авто -->
                     <td>{{ order[6] }}</td> <! -- Оценка -->
@@ -64,3 +64,8 @@
     </div>
 </body>
 </html>
+<footer>
+    <div class="footer" style="color: white; background-color: black;">
+        <span>Разработчик: korneev.dev</span>
+    </div>
+</footer>
