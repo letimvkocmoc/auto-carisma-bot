@@ -43,6 +43,12 @@ def calculate():
     return jsonify(result)
 
 
+@app.route('/new_order')
+def new_order():
+    currencies = sql.get_currencies()
+    return render_template('new_order.html', currency=currencies)
+
+
 @app.route('/create_order', methods=['POST'])
 def create_order():
     data = request.get_json()

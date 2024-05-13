@@ -15,93 +15,9 @@
         <a href="./orders" class="button">Заявки</a>
     </div>
     <div class="deliner"></div>
-    <div class="calculator-form-main">
-        <div class="new-order-form">
-            <table class="new_order_table">
-                <tbody>
-                <tr>
-                    <td>Имя</td>
-                    <td>
-                        <input type="text" id="client_first_name">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Фамилия</td>
-                    <td>
-                        <input type="text" id="client_last_name">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Telegram ID</td>
-                    <td>
-                        <input type="text" id="client_id">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Телефон</td>
-                    <td>
-                        <input type="text" id="client_phonenumber">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Марка авто</td>
-                    <td>
-                        <input type="text" id="model_auto">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Оценка</td>
-                    <td>
-                        <input type="text" id="rating">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Стоимость</td>
-                    <td>
-                        <input type="text" id="auto_price">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Статус</td>
-                    <td>
-                        <select id="status">
-                            <option value="В обработке">В обработке</option>
-                            <option value="Подбор авто">Подбор авто</option>
-                            <option value="Розыгрыш на аукционе">Розыгрыш на аукционе</option>
-                            <option value="В пути">В пути</option>
-                            <option value="Процесс растаможки">Процесс растаможки</option>
-                            <option value="Доставлено">Доставлено</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Фото (ссылка)</td>
-                    <td>
-                        <input type="text" id="picture">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ссылка на аукцион</td>
-                    <td>
-                        <input type="text" id="link">
-                    </td>
-                </tr>
-                <tr>
-                    <td>Оплачен</td>
-                    <td>
-                        <select id="is_paid">
-                            <option value="1">Оплачен</option>
-                            <option value="0">Не оплачен</option>
-                        </select>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <button>Создать заявку</button>
-        </div>
-        <form class="calculator-form" action="/calculate" method="POST" id="calculator-form">
-    <table class="calculator">
-        <tbody>
+    <form class="calculator-form" action="/calculate" method="POST" id="calculator-form">
+        <table class="calculator">
+            <tbody>
             <tr>
                 <td>Автомобиль ввозит</td>
                 <td>
@@ -162,55 +78,52 @@
                     </select>
                 </td>
             </tr>
-        </tbody>
-    </table>
-    <div class="notice">
-        <span style="text-align: left; font-size: 12px; margin: 0px;">*рассчет производится с учетом расходов по Японии</span><br><br>
-    </div>
-    <div class="currency">
-        <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
-        <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
-        <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
-        <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
-    </div>
-    <button type="button" onclick="submitForm()">Рассчитать</button>
-</form>
+            </tbody>
+        </table>
+        <div class="notice">
+            <span style="text-align: left; font-size: 12px; margin: 0px;">*рассчет производится с учетом расходов по Японии</span><br><br>
+        </div>
+        <div class="currency">
+            <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
+            <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
+            <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
+            <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
+        </div>
+        <button type="button" onclick="submitForm()">Рассчитать</button>
         <div id="result" class="result">
-    <table class="result">
-        <tbody>
-            <tr>
-                <td style="width: 200px;">Сбор</td>
-                <td id="sbor"> </td>
-            </tr>
-            <tr>
-                <td style="width: 200px;">Налог</td>
-                <td id="tax"> </td>
-            </tr>
-            <tr>
-                <td style="width: 200px;">Налоговая ставка</td>
-                <td id="tax_k"> </td>
-            </tr>
-            <tr>
-                <td style="width: 200px;">Сбор утилизации</td>
-                <td id="util"> </td>
-            </tr>
-            <tr>
-                <td style="width: 200px;">Сбор утилизации калькуляция</td>
-                <td id="util_k"> </td>
-            </tr>
-            <tr>
-                <td style="width: 200px;">Итого</td>
-                <td id="total"> </td>
-            </tr>
-            <tr>
-                <td style="width: 200px;">Итого 2</td>
-                <td id="total2"> </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-    </div>
-</div>
+            <table class="result">
+                <tbody>
+                <tr>
+                    <td style="width: 200px;">Сбор</td>
+                    <td id="sbor"> </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Налог</td>
+                    <td id="tax"> </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Налоговая ставка</td>
+                    <td id="tax_k"> </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Сбор утилизации</td>
+                    <td id="util"> </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Сбор утилизации калькуляция</td>
+                    <td id="util_k"> </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Итого</td>
+                    <td id="total"> </td>
+                </tr>
+                <tr>
+                    <td style="width: 200px;">Итого 2</td>
+                    <td id="total2"> </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
 <script>
     function submitForm() {
     var form = document.getElementById("calculator-form");
@@ -236,43 +149,6 @@
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(Object.fromEntries(formData)));
 }
-</script>
-<script>
-    document.querySelector('button').addEventListener('click', function() {
-        var isPaidValue = document.getElementById('is_paid').value === 'True'; // Convert to boolean
-        var data = {
-            client_first_name: document.getElementById('client_first_name').value,
-            client_last_name: document.getElementById('client_last_name').value,
-            client_id: document.getElementById('client_id').value,
-            client_phonenumber: document.getElementById('client_phonenumber').value,
-            model_auto: document.getElementById('model_auto').value,
-            rating: document.getElementById('rating').value,
-            auto_price: document.getElementById('auto_price').value,
-            status: document.getElementById('status').value,
-            picture: document.getElementById('picture').value,
-            link: document.getElementById('link').value,
-            is_paid: isPaidValue // Use boolean value
-        };
-
-        fetch('/create_order', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(response => {
-            if (response.ok) {
-                // Обработать успешный результат
-                console.log('Заказ успешно создан');
-                window.location.href = '/orders'; // Перенаправить на страницу /orders
-            } else {
-                // Обработать ошибку
-                console.error('Не удалось создать заказ');
-            }
-        }).catch(error => {
-            console.error('Ошибка:', error);
-        });
-    });
 </script>
 <footer>
     <div class="footer">
