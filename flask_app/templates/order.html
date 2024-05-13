@@ -6,10 +6,10 @@
     <link rel="stylesheet" type="text/css" href="../static/styles.css">
     <title>Auto Carisma</title>
 </head>
+<body>
 <header>
     <img src="../static/images/logo.jpg" alt="Лого" width="400" height="auto">
 </header>
-<body>
 <div class="main">
     <div class="deliner"></div>
     <div class="menu">
@@ -17,48 +17,72 @@
     </div>
     <div class="container">
         <div class="deliner"></div>
-        <div class="order" style="width: 98%; height: 900px; background-color: white; margin: 10px auto auto auto; border-radius: 5px; display: flex;">
+        <div class="order" style="width: 98%; height: 970px; background-color: white; margin: 10px auto auto auto; border-radius: 5px; display: flex;">
             <div class="order-details" style="width: auto; margin: 10px auto auto auto;">
                 <div class="order_photo" style="width: auto; height: auto;">
                     <img src="{{ order[9] }}" style="margin: 10px 10px 0 10px; width: 449px; height: 250px; border-radius: 5px; outline: 1px solid #9f42fc;" alt="Фото">
                 </div>
                 <div class="order-detail-table" style="margin: auto;">
-                    <table class="order-detail-table-content" style="margin: 10px; width: 450px;">
+                    <form id="updateForm" action="./edit/{{ id }}/update" method="POST">
+                        <table class="order-detail-table-content" style="margin: 10px; width: 450px;">
                         <tbody>
                         <tr>
                             <td>Имя</td>
-                            <td><input type="text" value="{{ order[2] }}"></td>
+                            <td><input type="text" id="client_first_name" value="{{ order[2] }}"></td>
                         </tr>
                         <tr>
                             <td>Фамилия</td>
-                            <td><input type="text" value="{{ order[3] }}"></td>
+                            <td><input type="text" id="client_last_name" value="{{ order[3] }}"></td>
                         </tr>
                         <tr>
                             <td>Telegram ID</td>
-                            <td><input type="text" value="{{ order[1] }}"></td>
+                            <td><input type="text" id="client_id" value="{{ order[1] }}"></td>
                         </tr>
                         <tr>
                             <td>Номер телефона</td>
-                            <td><input type="text" value="{{ order[4] }}"></td>
+                            <td><input type="text" id="client_phonenumber" value="{{ order[4] }}"></td>
                         </tr>
                         <tr>
                             <td>Марка авто</td>
-                            <td><input type="text" value="{{ order[5] }}"></td>
+                            <td><input type="text" id="model_auto" value="{{ order[5] }}"></td>
                         </tr>
                         <tr>
                             <td>Оценка</td>
-                            <td><input type="text" value="{{ order[6] }}"></td>
+                            <td><input type="text" id="rating" value="{{ order[6] }}"></td>
                         </tr>
                         <tr>
                             <td>Стоимость</td>
-                            <td><input type="text" value="{{ order[7] }}"></td>
+                            <td><input type="text" id="auto_price" value="{{ order[7] }}"></td>
                         </tr>
                         <tr>
                             <td>Статус</td>
-                            <td><input type="text" value="{{ order[8] }}"></td>
+                            <td><input type="text" id="status" value="{{ order[8] }}"></td>
+                        </tr>
+                        <tr>
+                            <td>Фото</td>
+                            <td><input type="text" id="picture" value="{{ order[9] }}"></td>
+                        </tr>
+                        <tr>
+                            <td>Ссылка на аукцион</td>
+                            <td><input type="text" id="link" value="{{ order[10] }}"></td>
+                        </tr>
+                        <tr>
+                            <td>Оплачен</td>
+                            <td>
+                                <select id="is_paid">
+                                    <option value="1" {% if order[11] == 1 %} selected {% endif %}>Оплачен</option>
+                                    <option value="0" {% if order[11] == 0 %} selected {% endif %}>Не оплачен</option>
+                                </select>
+                            </td>
                         </tr>
                         </tbody>
-                    </table>
+                        </table>
+                        <div>
+                            <button type="submit">Обновить заявку</button>
+                            <button type="button">Удалить заявку</button>
+                        </div>
+
+                    </form>
                 </div>
             </div>
             <form class="calculator-form" action="/calculate" method="POST" id="calculator-form">
@@ -129,10 +153,10 @@
                     <span style="text-align: left; font-size: 12px; margin: 0;">*рассчет производится с учетом расходов по Японии</span><br><br>
                 </div>
                 <div class="currency">
-                    <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
-                    <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
-                    <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
-                    <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
+                    <span style="align-items: center"><img src="../static/images/usd.png" width="18" height="18"> 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
+                    <span style="align-items: center"><img src="../static/images/eur.png" width="18" height="18"> 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
+                    <span style="align-items: center"><img src="../static/images/cny.png" width="18" height="18"> 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
+                    <span style="align-items: center"><img src="../static/images/jpy.png" width="18" height="18"> 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
                 </div>
                 <button type="button" onclick="submitForm()">Рассчитать</button>
             </form>
@@ -172,7 +196,6 @@
             </div>
         </div>
     </div>
-</body>
 <script>
     function submitForm() {
     var form = document.getElementById("calculator-form");
@@ -199,6 +222,67 @@
     xhr.send(JSON.stringify(Object.fromEntries(formData)));
 }
 </script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('#updateForm').submit(function(event) {
+        event.preventDefault();
+
+        var updateData = {
+            client_firstname: $('#client_first_name').val(),
+            client_lastname: $('#client_last_name').val(),
+            client_id: $('#client_id').val(),
+            client_phonenumber: $('#client_phonenumber').val(),
+            model_auto: $('#model_auto').val(),
+            rating: $('#rating').val(),
+            price: $('#auto_price').val(),
+            status: $('#status').val(),
+            picture: $('#picture').val(),
+            link: $('#link').val(),
+            is_paid: $('#is_paid').val()
+        };
+
+        var id = window.location.pathname.split('/').pop();
+
+        $.ajax({
+            type: 'POST',
+            url: '/edit/' + id + '/update',
+            data: JSON.stringify(updateData),
+            contentType: 'application/json',
+            success: function(response) {
+                window.location.href = '/orders';
+                alert('Заявка успешно обновлена!');
+},
+            error: function(xhr, status, error) {
+                console.error('An error occurred while updating the order:', error);
+            }
+        });
+    });
+});
+</script>
+<script>
+    $(document).ready(function() {
+
+    $('button[type="button"]').click(function() {
+
+        var id = window.location.pathname.split('/').pop();
+
+        $.ajax({
+            type: 'POST',
+            url: '/edit/' + id + '/delete',
+            success: function(response) {
+                window.location.href = '/orders';
+                alert('Заявка успешно удалена!');
+            },
+            error: function(xhr, status, error) {
+                console.error('Произошла ошибка при удалении заявки:', error);
+            }
+        });
+    });
+});
+</script>
+</div>
+</body>
 <footer>
     <div class="footer" style="color: white; background-color: black;">
         <span>Разработчик: korneev.dev</span>

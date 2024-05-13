@@ -168,11 +168,11 @@
         <span style="text-align: left; font-size: 12px; margin: 0px;">*рассчет производится с учетом расходов по Японии</span><br><br>
     </div>
     <div class="currency">
-        <span style="align-items: center">🇺🇸 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
-        <span style="align-items: center">&#127466;&#127482; 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
-        <span style="align-items: center">🇪🇺 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
-        <span style="align-items: center">🇯🇵 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
-    </div>
+                    <span style="align-items: center"><img src="../static/images/usd.png" width="18" height="18"> 1 USD = {{ currency['currency']['USD'] }} ₽</span><br>
+                    <span style="align-items: center"><img src="../static/images/eur.png" width="18" height="18"> 1 EUR = {{ currency['currency']['EUR'] }} ₽</span><br>
+                    <span style="align-items: center"><img src="../static/images/cny.png" width="18" height="18"> 1 CNY = {{ currency['currency']['CNY'] }} ₽</span><br>
+                    <span style="align-items: center"><img src="../static/images/jpy.png" width="18" height="18"> 1 JPY = {{ currency['currency']['JPY'] }} ₽</span><br><br>
+                </div>
     <button type="button" onclick="submitForm()">Рассчитать</button>
 </form>
         <div id="result" class="result">
@@ -239,7 +239,7 @@
 </script>
 <script>
     document.querySelector('button').addEventListener('click', function() {
-        var isPaidValue = document.getElementById('is_paid').value === 'True'; // Convert to boolean
+        var isPaidValue = document.getElementById('is_paid').value === 'True';
         var data = {
             client_first_name: document.getElementById('client_first_name').value,
             client_last_name: document.getElementById('client_last_name').value,
@@ -251,7 +251,7 @@
             status: document.getElementById('status').value,
             picture: document.getElementById('picture').value,
             link: document.getElementById('link').value,
-            is_paid: isPaidValue // Use boolean value
+            is_paid: isPaidValue
         };
 
         fetch('/create_order', {
@@ -262,11 +262,9 @@
             body: JSON.stringify(data)
         }).then(response => {
             if (response.ok) {
-                // Обработать успешный результат
                 console.log('Заказ успешно создан');
-                window.location.href = '/orders'; // Перенаправить на страницу /orders
+                window.location.href = '/orders';
             } else {
-                // Обработать ошибку
                 console.error('Не удалось создать заказ');
             }
         }).catch(error => {

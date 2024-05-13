@@ -1,4 +1,4 @@
-from sqlalchemy import insert, select, update
+from sqlalchemy import insert, select, update, delete
 from sqlalchemy.orm import Session
 from database.db import engine, currency, orders
 
@@ -76,3 +76,25 @@ class SQL:
         request = self.session.execute(data)
         result = request.fetchone()
         return result
+
+    def update_order(self, id, client_first_name, client_last_name, client_id, client_phonenumber, model_auto, rating, price, status, picture, link, is_paid):
+        data = update(orders).where(orders.c.id == id).values(
+            client_first_name=client_first_name,
+            client_last_name=client_last_name,
+            client_id=client_id,
+            client_phonenumber=client_phonenumber,
+            model_auto=model_auto,
+            rating=rating,
+            price=price,
+            status=status,
+            picture=picture,
+            link=link,
+            is_paid=is_paid
+        )
+        self.session.execute(data)
+        self.session.commit()
+
+    def delete_order(self, id):
+        data = delete(orders).where(orders.c.id == id)
+        self.session.execute(data)
+        self.session.commit()
