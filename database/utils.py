@@ -70,3 +70,9 @@ class SQL:
         )
         self.session.execute(data)
         self.session.commit()
+
+    def get_order(self, id):
+        data = select(orders).where(orders.c.id == id)
+        request = self.session.execute(data)
+        result = request.fetchone()
+        return result

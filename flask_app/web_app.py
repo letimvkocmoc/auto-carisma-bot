@@ -21,12 +21,6 @@ def core():
     return render_template('orders.html', orders=orders)
 
 
-@app.route('/calc')
-def calc():
-    currencies = sql.get_currencies()
-    return render_template('calculator.html', currency=currencies)
-
-
 @app.route('/calculate', methods=['POST'])
 def calculate():
     data = request.get_json()
@@ -68,6 +62,13 @@ def create_order():
 
     result = {'status': 'ok'}
     return result
+
+
+@app.route('/edit/<int:id>')
+def edit_order(id):
+    order = sql.get_order(id)
+    currencies = sql.get_currencies()
+    return render_template('order.html', order=order, currency=currencies)
 
 
 if __name__ == '__main__':
