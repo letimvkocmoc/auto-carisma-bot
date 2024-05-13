@@ -90,8 +90,8 @@
                     <td>Оплачен</td>
                     <td>
                         <select id="is_paid">
-                            <option value="True">Оплачен</option>
-                            <option value="False">Не оплачен</option>
+                            <option value="1">Оплачен</option>
+                            <option value="0">Не оплачен</option>
                         </select>
                     </td>
                 </tr>
@@ -179,31 +179,31 @@
     <table class="result">
         <tbody>
             <tr>
-                <td>Сбор</td>
+                <td style="width: 200px;">Сбор</td>
                 <td id="sbor"> </td>
             </tr>
             <tr>
-                <td>Налог</td>
+                <td style="width: 200px;">Налог</td>
                 <td id="tax"> </td>
             </tr>
             <tr>
-                <td>Налоговая ставка</td>
+                <td style="width: 200px;">Налоговая ставка</td>
                 <td id="tax_k"> </td>
             </tr>
             <tr>
-                <td>Сбор утилизации</td>
+                <td style="width: 200px;">Сбор утилизации</td>
                 <td id="util"> </td>
             </tr>
             <tr>
-                <td>Сбор утилизации калькуляция</td>
+                <td style="width: 200px;">Сбор утилизации калькуляция</td>
                 <td id="util_k"> </td>
             </tr>
             <tr>
-                <td>Итого</td>
+                <td style="width: 200px;">Итого</td>
                 <td id="total"> </td>
             </tr>
             <tr>
-                <td>Итого 2</td>
+                <td style="width: 200px;">Итого 2</td>
                 <td id="total2"> </td>
             </tr>
         </tbody>
@@ -236,6 +236,43 @@
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(JSON.stringify(Object.fromEntries(formData)));
 }
+</script>
+<script>
+    document.querySelector('button').addEventListener('click', function() {
+        var isPaidValue = document.getElementById('is_paid').value === 'True'; // Convert to boolean
+        var data = {
+            client_first_name: document.getElementById('client_first_name').value,
+            client_last_name: document.getElementById('client_last_name').value,
+            client_id: document.getElementById('client_id').value,
+            client_phonenumber: document.getElementById('client_phonenumber').value,
+            model_auto: document.getElementById('model_auto').value,
+            rating: document.getElementById('rating').value,
+            auto_price: document.getElementById('auto_price').value,
+            status: document.getElementById('status').value,
+            picture: document.getElementById('picture').value,
+            link: document.getElementById('link').value,
+            is_paid: isPaidValue // Use boolean value
+        };
+
+        fetch('/create_order', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response => {
+            if (response.ok) {
+                // Обработать успешный результат
+                console.log('Заказ успешно создан');
+                window.location.href = '/orders'; // Перенаправить на страницу /orders
+            } else {
+                // Обработать ошибку
+                console.error('Не удалось создать заказ');
+            }
+        }).catch(error => {
+            console.error('Ошибка:', error);
+        });
+    });
 </script>
 <footer>
     <div class="footer">

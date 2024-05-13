@@ -54,3 +54,19 @@ class SQL:
         result = request.fetchall()
         return result
 
+    def new_order(self, client_first_name, client_last_name, client_id, client_phonenumber, model_auto, rating, price, status, picture, link, is_paid):
+        data = insert(orders).values(
+            client_first_name=client_first_name,
+            client_last_name=client_last_name,
+            client_id=client_id,
+            client_phonenumber=client_phonenumber,
+            model_auto=model_auto,
+            rating=rating,
+            price=price,
+            status=status,
+            picture=picture,
+            link=link,
+            is_paid=is_paid
+        )
+        self.session.execute(data)
+        self.session.commit()

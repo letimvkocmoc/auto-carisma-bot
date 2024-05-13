@@ -43,5 +43,26 @@ def calculate():
     return jsonify(result)
 
 
+@app.route('/create_order', methods=['POST'])
+def create_order():
+    data = request.get_json()
+    sql.new_order(
+        data['client_first_name'],
+        data['client_last_name'],
+        data['client_id'],
+        data['client_phonenumber'],
+        data['model_auto'],
+        data['rating'],
+        data['auto_price'],
+        data['status'],
+        data['picture'],
+        data['link'],
+        data['is_paid']
+    )
+
+    result = {'status': 'ok'}
+    return result
+
+
 if __name__ == '__main__':
     app.run(debug=True)
