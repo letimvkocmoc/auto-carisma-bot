@@ -38,7 +38,7 @@ orders = Table(
     Column('client_id', String(100), nullable=False),
     Column('client_first_name', String(100)),
     Column('client_last_name', String(100)),
-    Column('client_phonenubmer', String(100)),
+    Column('client_phonenumber', String(100)),
     Column('model_auto', String(100)),
     Column('rating', String(100)),
     Column('price', Integer()),

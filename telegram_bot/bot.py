@@ -12,7 +12,7 @@ from core.jobs import get_currency_rate
 
 logging.basicConfig(level=logging.INFO)
 
-bot_token = os.getenv('BOT_TOKEN')
+bot_token = '6156885677:AAH_SFmK_a2lPGKK2eLyN8mdwSj9YWgdOWQ'
 bot = Bot(token=bot_token)
 
 dp = Dispatcher()
