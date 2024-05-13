@@ -72,16 +72,16 @@ async def get_orders(callback_query: types.CallbackQuery):
             for order in orders:
                 keyboard = create_link(1, link=order[10], text='Ссылка на аукцион', id=order[0])
                 await callback_query.message.answer_photo(photo=f"{order[9]}",
-                                                          caption=f"🔎 Заявка <b>№ {order[0]}</b>\n"
-                                                                  f"🔹 Имя: {order[2]}\n"
-                                                                  f"🔹 Фамилия: {order[3]}\n"
-                                                                  f"🔹 Телеграм ID: {order[1]}\n"
-                                                                  f"☎️ Номер телефона: {order[4]}\n"
-                                                                  f"🚗 Марка авто: {order[5]}\n"
-                                                                  f"⭐️ Оценка: {order[6]}\n"
-                                                                  f"💵 Стоимость: {order[7]}\n"
-                                                                  f"📍 Статус: {order[8]}\n"
-                                                                  f"💰 Оплачен: {'✅' if order[11] else '❌'}\n",
+                                                          caption=f"🔎 <b>Заявка № {order[0]}</b>\n"
+                                                                  f"🔹 <b>Имя:</b> {order[2]}\n"
+                                                                  f"🔹 <b>Фамилия:</b> {order[3]}\n"
+                                                                  f"🔹 <b>Телеграм ID:</b> <a href='tg://user?id={order[1]}'>{order[1]}</a>\n"
+                                                                  f"☎️ <b>Номер телефона:</b> <a href='tel:{order[4]}'>{order[4]}</a>\n"
+                                                                  f"🚗 <b>Марка авто:</b> {order[5]}\n"
+                                                                  f"⭐️ <b>Оценка:</b> {order[6]}\n"
+                                                                  f"💵 <b>Стоимость:</b> {order[7]} ₽\n"
+                                                                  f"📍 <b>Статус:</b> {order[8]}\n"
+                                                                  f"💰 <b>Оплачен:</b> {'✅' if order[11] else '❌'}\n",
                                                           parse_mode='html', reply_markup=keyboard)
         except Exception as e:
             await callback_query.message.answer(text=f'Какая то хуйня: {e}')
