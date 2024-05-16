@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Авторизация</title>
+  </head>
+  <body>
+    <h1>Авторизация</h1>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% endif %}
+    <form id="login-form" action="/login" method="post">
+      <div>
+        <label for="username">Имя пользователя: </label>
+        <input type="text" id="username" name="username">
+      </div>
+      <div>
+        <label for="password">Пароль: </label>
+        <input type="password" id="password" name="password">
+      </div>
+      <button type="submit">Войти</button>
+    </form>
+  </body>
+</html>

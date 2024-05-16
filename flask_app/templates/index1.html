@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заказ авто из Японии</title>
+    <link rel="stylesheet" type="text/css" href="../static/styles1.css">
+</head>
+<body>
+    <header>
+        <h1>Заказ авто из Японии</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#about">О нас</a></li>
+                <li><a href="#contact">Контакты</a></li>
+                <li><button class="login-btn popup-link">Вход и регистрация</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Добро пожаловать!</h2>
+        <p>Закажите свое авто из Японии прямо сейчас!</p>
+        <a href="#services" class="btn">Узнать больше</a>
+    </section>
+
+    <section id="services">
+        <h2>Наши услуги</h2>
+        <ul>
+            <li>Поиск автомобилей</li>
+            <li>Покупка и доставка</li>
+            <li>Таможенное оформление</li>
+        </ul>
+    </section>
+
+    <section id="about">
+        <h2>О нас</h2>
+        <p>Компания "Заказ авто из Японии" является лидером в сфере поиска и доставки автомобилей из Японии. Мы предлагаем высококачественные услуги по доступным ценам. Наши специалисты имеют многолетний опыт и помогут вам с выбором и приобретением автомобиля вашей мечты.</p>
+        <p><strong>Преимущества:</strong></p>
+        <ul>
+            <li>Большой выбор автомобилей</li>
+            <li>Прямые поставки из Японии</li>
+            <li>Индивидуальный подход к каждому клиенту</li>
+            <li>Высокое качество обслуживания</li>
+            <li>Гарантия безопасности и надежности</li>
+        </ul>
+    </section>
+
+    <section id="contact">
+        <h2>Контакты</h2>
+        <p>Свяжитесь с нами для заказа автомобиля из Японии:</p>
+        <ul>
+            <li>Телефон: +7 123 456-78-90</li>
+            <li>Email: info@example.com</li>
+            <li>Адрес: Москва, ул. Примерная, 123</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Заказ авто из Японии</p>
+    </footer>
+
+    <!-- Попап окно для входа в админ панель -->
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+    <form class="login-input-form" id="loginForm">
+        <input checked="" id="signin" name="action" type="radio" value="signin">
+        <label for="signin">Войти</label>
+        <input id="signup" name="action" type="radio" value="signup">
+        <label for="signup">Регистрация</label>
+        <input id="reset" name="action" type="radio" value="reset">
+        <label for="reset">Сброс пароля</label>
+        <div id="wrapper">
+            <div id="arrow"></div>
+            <input id="username" placeholder="Логин" type="text">
+            <input id="password" placeholder="Пароль" type="password">
+            <input id="repass" placeholder="Повторите пароль" type="password">
+        </div>
+        <button type="submit">
+            <span>
+                Сброс пароля
+                <br>
+                Войти
+                <br>
+                Регистрация
+            </span>
+        </button>
+    </form>
+</div>
+
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+        var overlay = document.getElementById('overlay');
+        var popup = document.getElementById('popup');
+        var loginForm = document.getElementById('loginForm');
+
+        // функция открытия попап окна
+        function openPopup() {
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+        }
+
+        // функция закрытия попап окна с анимацией
+        function closePopupWithAnimation() {
+            overlay.style.animation = 'overlayFadeOut 0.3s ease forwards';
+            popup.style.animation = 'popupFadeOut 0.3s ease forwards';
+
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                popup.style.display = 'none';
+                overlay.style.animation = '';
+                popup.style.animation = '';
+            }, 300);
+        }
+
+        // добавляем обработчик события для открытия попапа
+        var popupLink = document.querySelector('.popup-link');
+        popupLink.addEventListener('click', function() {
+            openPopup();
+        });
+
+        // добавляем обработчик события для оверлея и кнопки закрытия
+        overlay.addEventListener('click', function(event) {
+            if (event.target === overlay) {
+                closePopupWithAnimation();
+            }
+        });
+
+        // Обработчик события отправки формы
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Отменяем стандартное поведение формы
+
+            var usernameInput = document.getElementById('username').value;
+            var passwordInput = document.getElementById('password').value;
+
+            // Создаем объект с данными для отправки
+            var data = {
+                username: usernameInput,
+                password: passwordInput,
+            };
+
+            // Отправляем POST-запрос на /login
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Действия после успешной обработки запроса
+                    closePopupWithAnimation(); // Закрываем попап окно
+                    window.location.href = '/orders';
+                } else {
+                    // Действия при ошибке обработки запроса
+                    console.error('Ошибка:', response.statusText);
+                }
+            })
+            .catch(error => {
+                // Действия при сетевой ошибке
+                console.error('Произошла сетевая ошибка:', error);
+            });
+        });
+    });
+</script>
+</body>
+</html>

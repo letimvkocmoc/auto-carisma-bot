@@ -1,7 +1,10 @@
-from flask import Flask, render_template, request, jsonify
+import os
+
+from flask import Flask, make_response, render_template, request, jsonify, session, redirect, url_for
 
 from core.utils import get_calculation
 from database.utils import SQL
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = Flask(__name__)
@@ -9,15 +12,55 @@ app = Flask(__name__)
 
 sql = SQL()
 
+app.secret_key = os.getenv('FLASK_SECRET_KEY')
+
 
 @app.route('/')
 def index_page():
-    return render_template('index.html')
+    return render_template('index1.html')
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login_page():
+    if request.method == 'POST':
+        data = request.get_json()
+        username = data['username']
+        password = data['password']
+        #username = request.form.get('username')
+        #password = request.form.get('password')
+        #remember = request.form.get('remember')
+        users = sql.get_users_from_website()
+
+        for user in users:
+            if username == user[1] and check_password_hash(user[2], password):
+                session['username'] = username
+                #if remember:
+                response = make_response(redirect('/orders'))
+                    #response.set_cookie('username', username, max_age=2592000)
+                return response
+            else:
+                return render_template('login.html', error='Неверный логин или пароль')
+
+    return render_template('login.html', error='')
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register_page():
+    return render_template('register.html')
+
+
+def login_required(function):
+    def decorated_function(*args, **kwargs):
+        if 'username' not in session:
+            return redirect('/login')
+        return function(*args, **kwargs)
+    return decorated_function
 
 
 @app.route('/orders')
+@login_required
 def orders_page():
-    orders = sql.get_orders()
+    orders = sql.get_users_from_website()
     return render_template('orders.html', orders=orders)
 
 

@@ -70,7 +70,7 @@ async def get_orders(callback_query: types.CallbackQuery):
         try:
             orders = sql.get_orders()
             for order in orders:
-                keyboard = create_link(1, link=order[10], text='Ссылка на аукцион', id=order[0])
+                keyboard = create_link(1, link=order[10], text='Открыть аукцион', id=order[0])
                 await callback_query.message.answer_photo(photo=f"{order[9]}",
                                                           caption=f"🔎 <b>Заявка № {order[0]}</b>\n"
                                                                   f"🔹 <b>Имя:</b> {order[2]}\n"
