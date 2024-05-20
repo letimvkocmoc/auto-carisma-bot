@@ -48,4 +48,12 @@ orders = Table(
     Column('is_paid', Boolean(), default=False)
 )
 
+users_from_website = Table(
+    'users_from_website',
+    metadata,
+    Column('id', Integer(), unique=True, primary_key=True),
+    Column('username', String(100), nullable=False, unique=True),
+    Column('password', String(500), nullable=False)
+)
+
 metadata.create_all(engine)

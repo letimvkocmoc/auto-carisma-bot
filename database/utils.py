@@ -1,6 +1,6 @@
 from sqlalchemy import insert, select, update, delete
 from sqlalchemy.orm import Session
-from database.db import engine, currency, orders
+from database.db import engine, currency, orders, users_from_website
 
 
 class SQL:
@@ -98,3 +98,9 @@ class SQL:
         data = delete(orders).where(orders.c.id == id)
         self.session.execute(data)
         self.session.commit()
+
+    def get_users_from_website(self):
+        data = select(users_from_website.c)
+        request = self.session.execute(data)
+        result = request.fetchall()
+        return result
