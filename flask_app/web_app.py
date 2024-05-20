@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, make_response, render_template, request, jsonify, session, redirect, url_for
 
-from core.utils import get_calculation
+from core.utils import get_calculation, login_required
 from database.utils import SQL
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -47,14 +47,6 @@ def login_page():
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
     return render_template('register.html')
-
-
-def login_required(function):
-    def decorated_function(*args, **kwargs):
-        if 'username' not in session:
-            return redirect('/login')
-        return function(*args, **kwargs)
-    return decorated_function
 
 
 @app.route('/orders')

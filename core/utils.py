@@ -1,10 +1,19 @@
 from datetime import datetime
 
 import requests
+from flask import redirect, session
 
 from database.utils import SQL
 
 sql = SQL()
+
+
+def login_required(function):
+    def decorated_function(*args, **kwargs):
+        if 'username' not in session:
+            return redirect('/login')
+        return function(*args, **kwargs)
+    return decorated_function
 
 
 def calculate_offer(car_price):

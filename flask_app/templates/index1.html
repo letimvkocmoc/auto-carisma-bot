@@ -15,7 +15,7 @@
                 <li><a href="#services">Услуги</a></li>
                 <li><a href="#about">О нас</a></li>
                 <li><a href="#contact">Контакты</a></li>
-                <li><button class="login-btn popup-link">Вход и регистрация</button></li>
+                <li><button class="login-btn popup-link">Войти и регистрация</button></li>
             </ul>
         </nav>
     </header>
@@ -89,82 +89,79 @@
         </button>
     </form>
 </div>
-
 <script>
     window.addEventListener('DOMContentLoaded', function() {
-        var overlay = document.getElementById('overlay');
-        var popup = document.getElementById('popup');
-        var loginForm = document.getElementById('loginForm');
+    var overlay = document.getElementById('overlay');
+    var popup = document.getElementById('popup');
+    var loginForm = document.getElementById('loginForm');
 
-        // функция открытия попап окна
-        function openPopup() {
-            overlay.style.display = 'block';
-            popup.style.display = 'block';
+    // функция открытия попап окна
+    function openPopup() {
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
+    }
+
+    // функция закрытия попап окна с анимацией
+    function closePopupWithAnimation() {
+        overlay.style.animation = 'overlayFadeOut 0.3s ease forwards';
+        popup.style.animation = 'popupFadeOut 0.3s ease forwards';
+
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+            overlay.style.animation = '';
+            popup.style.animation = '';
+        }, 300);
+    }
+
+    // добавляем обработчик события для открытия попапа
+    var popupLink = document.querySelector('.popup-link');
+    popupLink.addEventListener('click', function() {
+        openPopup();
+    });
+
+    // добавляем обработчик события для оверлея и кнопки закрытия
+    overlay.addEventListener('click', function(event) {
+        if (event.target === overlay) {
+            closePopupWithAnimation();
         }
+    });
 
-        // функция закрытия попап окна с анимацией
-        function closePopupWithAnimation() {
-            overlay.style.animation = 'overlayFadeOut 0.3s ease forwards';
-            popup.style.animation = 'popupFadeOut 0.3s ease forwards';
+    // Обработчик события отправки формы
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Отменяем стандартное поведение формы
 
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                popup.style.display = 'none';
-                overlay.style.animation = '';
-                popup.style.animation = '';
-            }, 300);
-        }
+        var usernameInput = document.getElementById('username').value;
+        var passwordInput = document.getElementById('password').value;
 
-        // добавляем обработчик события для открытия попапа
-        var popupLink = document.querySelector('.popup-link');
-        popupLink.addEventListener('click', function() {
-            openPopup();
-        });
+        // Создаем объект с данными для отправки
+        var data = {
+            username: usernameInput,
+            password: passwordInput,
+        };
 
-        // добавляем обработчик события для оверлея и кнопки закрытия
-        overlay.addEventListener('click', function(event) {
-            if (event.target === overlay) {
-                closePopupWithAnimation();
-            }
-        });
-
-        // Обработчик события отправки формы
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Отменяем стандартное поведение формы
-
-            var usernameInput = document.getElementById('username').value;
-            var passwordInput = document.getElementById('password').value;
-
-            // Создаем объект с данными для отправки
-            var data = {
-                username: usernameInput,
-                password: passwordInput,
-            };
-
-            // Отправляем POST-запрос на /login
-            fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
+        // Отправляем POST-запрос на /login
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
             .then(response => {
-                if (response.ok) {
+                if (response.status === 200) {
                     // Действия после успешной обработки запроса
                     closePopupWithAnimation(); // Закрываем попап окно
                     window.location.href = '/orders';
                 } else {
                     // Действия при ошибке обработки запроса
-                    console.error('Ошибка:', response.statusText);
+                    response.json().then(errorData => {
+                        console.error('Ошибка:', errorData.message);
+                    });
                 }
-            })
-            .catch(error => {
-                // Действия при сетевой ошибке
-                console.error('Произошла сетевая ошибка:', error);
             });
-        });
     });
+});
 </script>
 </body>
 </html>
