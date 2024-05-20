@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/styles.css">
+    <title>Auto Carisma</title>
+</head>
+<body>
+    <header>
+        <img src="../static/images/logo.jpg" alt="Лого" width="400" height="auto">
+    </header>
+    <div class="main">
+        <div class="deliner"></div>
+        <div class="menu">
+            <a href="./new_order" class="button">Создать заявку</a>
+            <a href="./calc" class="button">Калькулятор</a>
+        </div>
+        <div class="container">
+            <div class="deliner"></div>
+            <div class="orders"></div>
+                {% for order in orders %}
+                    <div class="order">
+                        <div class="picture">
+                            <img src="{{ order[9] }}" alt="Фото" style="width: 150px; height: 85px; border-radius: 5px">
+                        </div>
+                        <div class="detail">
+                            <p>ID: {{ order[0] }}</p>
+                            <p>Имя: {{ order[2] }}</p>
+                            <p>Фамилия: {{ order[3] }}</p>
+                            <p>Telegram ID: {{ order[1] }}</p>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+                </div>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order[0] }}</td> <! -- № -->
+                    <td>{{ order[1] }}</td> <! -- Telegram ID клиента -->
+                    <td>{{ order[2] }}</td> <! -- Имя -->
+                    <td>{{ order[3] }}</td> <! -- Фамилия -->
+                    <td>{{ order[4] }}</td> <! -- Номер телефона -->
+                    <td>{{ order[5] }}</td> <! -- Марка авто -->
+                    <td>{{ order[6] }}</td> <! -- Оценка -->
+                    <td>{{ order[7] }}</td> <! -- Стоимость -->
+                    <td>{{ order[8] }}</td> <! -- Статус -->
+                    <td style="text-align: center;"><img src="{{ order[9] }}" alt="Фото" style="width: 150px; height: auto; border-radius: 5px"></td>
+                    <td><a href="{{ order[10] }}"><img src="../static/images/auction.png" alt="Аукцион" width="30" height="30"></a></td>
+                    <td>{% if order[11] %}<img src="../static/images/done.png" alt="Оплачен" width="30" height="30">{% else %}<img src="../static/images/false.png" alt="Не оплачен" width="30" height="30">{% endif %}</td>
+                    <td class="edit_icon">
+                        <a href="/edit/{{ order[0] }}">
+                            <img src="../static/images/edit_icon.png" width="30" height="30" alt="Редактировать">
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+</body>
+</html>

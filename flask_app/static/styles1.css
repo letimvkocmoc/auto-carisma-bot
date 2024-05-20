@@ -113,7 +113,7 @@ footer {
 #signup:checked ~ button span { transform: translate3d(0,-155px,0); }
 
 #reset:checked ~ #wrapper { height: 70px; }
-#reset:checked ~ #wrapper #arrow { left: 404px; }
+#reset:checked ~ #wrapper #arrow { left: 270px; }
 #reset:checked ~ button span { transform: translate3d(0,-10px,0); }
 
 .login-input-form {

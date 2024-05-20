@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Auto Carisma</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+    body {
+        width: 100%;
+        height: 1200px;
+        font-family: 'Inter', sans-serif;
+        font-size: 16px;
+        margin: 0;
+        padding: 0;
+        background-image: url("https://sportishka.com/uploads/posts/2023-12/1701911902_sportishka-com-p-temnie-oboi-mashini-instagram-43.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        backdrop-filter: blur(2px);
+    }
+
+    .header-container {
+        width: 100%;
+        height: 100px;
+        display: flex;
+    }
+
+    .logo {
+        justify-content: left;
+        margin: auto;
+        font-size: 36px;
+        font-weight: 600;
+    }
+
+    .nav-menu {
+        justify-content: center;
+        list-style-type: none;
+        margin: auto;
+    }
+
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .header-contacts {
+        justify-content: right;
+        margin: auto;
+    }
+
+    .main-top-container {
+        display: flex;
+        height: 800px;
+    }
+
+    .left-top-container {
+        justify-content: left;
+        margin: auto;
+    }
+
+    .left-top-container-text-n1 {
+        font-size: 56px;
+        font-weight: 800;
+    }
+
+    .left-top-container-text-n2 {
+        margin-top: 10px;
+    }
+
+    .left-top-container-buttons button {
+        margin-top: 40px;
+        width: 160px;
+        height: 40px;
+        border: #d500d5 3px solid;
+        border-radius: 1rem;
+        background-color: #d500d5;
+        color: white;
+        cursor: pointer;
+    }
+
+    .left-top-container-social {
+        display: flex;
+        margin-top: 20px;
+    }
+
+    .center-top-container {
+        justify-content: center;
+        margin: auto;
+    }
+
+    .center-top-container-subcontainer {
+        width: 300px;
+        height: 100px;
+        background: rgba(44, 44, 44, 0.46);
+        border-radius: 1rem;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .right-top-container {
+        justify-content: right;
+        margin: auto;
+    }
+
+    .right-top-container-review-n1 {
+        width: 400px;
+        height: 150px;
+        background: rgba(44, 44, 44, 0.46);
+        border-radius: 1rem;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .right-top-container-review-n2 {
+        width: 400px;
+        height: 150px;
+        background: rgba(44, 44, 44, 0.46);
+        border-radius: 1rem;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    .middle-container {
+        height: 200px;
+        display: flex;
+        backdrop-filter: blur(10px);
+    }
+
+    .middle-container-left {
+        justify-content: left;
+        margin: auto;
+    }
+
+    .middle-container-center {
+        justify-content: center;
+        margin: auto;
+    }
+
+    .middle-container-right {
+        justify-content: right;
+        margin: auto;
+    }
+
+    .popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background-color: #282828;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 9999;
+    animation: popupFadeIn 0.5s ease forwards;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    margin-top: 0;
+    margin-left: 0;
+    width: 340px;
+    height: 285px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 9998;
+    animation: overlayFadeIn 0.5s ease forwards;
+}
+
+
+:focus { outline: none; }
+::-webkit-input-placeholder { color: #DEDFDF; }
+::-moz-placeholder { color: #DEDFDF; }
+:-moz-placeholder { color: #DEDFDF; }
+::-ms-input-placeholder { color: #DEDFDF; }
+
+#wrapper, label, #arrow, button span { transition: all .5s cubic-bezier(.6,0,.4,1); }
+
+#wrapper { overflow: hidden; }
+
+#signin:checked ~ #wrapper { height: 134px; }
+#signin:checked ~ #wrapper #arrow { left: 32px; }
+#signin:checked ~ button span { transform: translate3d(0,-81px,0); }
+
+#signup:checked ~ #wrapper { height: 198px; }
+#signup:checked ~ #wrapper #arrow { left: 137px; }
+#signup:checked ~ button span { transform: translate3d(0,-155px,0); }
+
+#reset:checked ~ #wrapper { height: 70px; }
+#reset:checked ~ #wrapper #arrow { left: 270px; }
+#reset:checked ~ button span { transform: translate3d(0,-10px,0); }
+
+.login-input-form {
+    background: #282828;
+    color: white;
+}
+
+.login-input-form #wrapper, .login-input-form label, .login-input-form #arrow, .login-input-form button span {
+    transition: all .5s cubic-bezier(.6,0,.4,1);
+}
+
+.login-input-form #wrapper {
+    overflow: hidden;
+}
+
+.login-input-form input[type=radio] {
+    display: none;
+}
+
+.login-input-form label {
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    opacity: .5;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+.login-input-form label:hover {
+    transition: all .3s cubic-bezier(.6,0,.4,1);
+    opacity: 1;
+}
+.login-input-form label[for="signin"] {
+        margin-right: 15px;
+}
+.login-input-form label[for="reset"] {
+    float: right;
+}
+.login-input-form input[type=radio]:checked + label {
+    opacity: 1;
+}
+
+.login-input-form input[type=text],
+.login-input-form input[type=password] {
+    background: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    height: 50px;
+    width: 99.5%;
+    margin-bottom: 10px;
+    opacity: 1;
+    text-indent: 20px;
+    transition: all .2s ease-in-out;
+}
+.login-input-form button {
+    background: #9607cf;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    height: 50px;
+    width: 100%;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: all .3s cubic-bezier(.6,0,.4,1);
+}
+.login-input-form button span {
+    display: block;
+    line-height: 72px;
+    position: relative;
+    top: -2px;
+    transform: translate3d(0,0,0);
+}
+.login-input-form button:hover {
+    background: #8206b4;
+}
+
+.login-input-form #arrow {
+    height: 0;
+    width: 0;
+    border-bottom: 10px solid white;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: relative;
+    left: 32px;
+}
+
+
+.login-input-form #hint {
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 20px;
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes popupFadeOut {
+    from {
+        opacity: 1;;
+    }
+    to {
+        opacity: 0;;
+    }
+}
+
+@keyframes overlayFadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+</style>
+<body>
+<header>
+    <div class="header-container">
+        <div class="logo">
+            <span>Auto</span>
+            <span style="color: #d500d5;">Carisma</span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Почему мы?</a></li>
+                <li><a href="#">Контакты</a></li>
+                <li style="border: 3px purple solid; border-radius: 1rem; background-color: purple; color: black; padding: 5px;"><a href="#">Оставить заявку</a></li>
+                <li><button class="login-btn popup-link">Войти и регистрация</button></li>
+            </ul>
+        </nav>
+        <div class="header-contacts">
+            <span><img src="../static/images/message.png" style="width: 25px; height: 25px;"> auto-carisma@mail.ru</span>
+            <span><img src="../static/images/phone.png" style="width: 25px; height: 25px;"> 8 800 555 35 35</span>
+        </div>
+    </div>
+</header>
+<div class="main-top-container">
+    <div class="left-top-container">
+        <div class="left-top-container-text-n1">
+            <span>Текст № 1</span>
+        </div>
+        <div class="left-top-container-text-n2">
+            <span>Текст № 2</span>
+        </div>
+        <div class="left-top-container-buttons">
+            <button>Кнопка № 1</button>
+            <button>Кнопка № 2</button>
+        </div>
+        <div class="left-top-container-social">
+            <a href="#"><img src="../static/images/instagram.png" style="width: 25px; height: 25px; padding: 10px;"></a>
+            <a href="#"><img src="../static/images/whatsapp.png" style="width: 25px; height: 25px; padding: 10px;"></a>
+            <a href="#"><img src="../static/images/telegram.png" style="width: 25px; height: 25px; padding: 10px;"></a>
+        </div>
+    </div>
+    <div class="center-top-container">
+        <div class="center-top-container-subcontainer">
+            <div class="center-top-container-subcontainer-text">
+                <span>Наша команда</span>
+            </div>
+            <div class="center-top-container-subcontainer-image">
+                <span>Фото</span>
+            </div>
+        </div>
+    </div>
+    <div class="right-top-container">
+        <div class="right-top-container-review-n1">
+            <div class="right-top-container-review-n1-text">
+                <span>Текст № 1</span>
+            </div>
+            <div class="right-top-container-review-n1-profile">
+                <div class="right-top-container-review-n1-profile-image">
+                    <span>Фото № 1</span>
+                </div>
+                <div class="right-top-container-review-n1-profile-stars">
+                    <span>Оценка</span>
+                </div>
+            </div>
+        </div>
+        <div class="right-top-container-review-n2">
+            <div class="right-top-container-review-n2-text">
+                <span>Текст № 2</span>
+            </div>
+            <div class="right-top-container-review-n2-profile">
+                <div class="right-top-container-review-n2-profile-image">
+                    <span>Фото № 2</span>
+                </div>
+                <div class="right-top-container-review-n2-profile-stars">
+                    <span>Оценка</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="middle-container">
+    <div class="middle-container-left">
+        <span>Текст № 1</span>
+    </div>
+    <div class="middle-container-center">
+        <span>Текст № 2</span>
+    </div>
+    <div class="middle-container-right">
+        <span>Текст № 3</span>
+    </div>
+</div>
+<div class="overlay" id="overlay"></div>
+<div class="popup" id="popup">
+    <form class="login-input-form" id="loginForm">
+        <input checked="" id="signin" name="action" type="radio" value="signin">
+        <label for="signin">Войти</label>
+        <input id="signup" name="action" type="radio" value="signup">
+        <label for="signup">Регистрация</label>
+        <input id="reset" name="action" type="radio" value="reset">
+        <label for="reset">Сброс пароля</label>
+        <div id="wrapper">
+            <div id="arrow"></div>
+            <input id="username" placeholder="Логин" type="text">
+            <input id="password" placeholder="Пароль" type="password">
+            <input id="repass" placeholder="Повторите пароль" type="password">
+        </div>
+        <button type="submit">
+            <span>
+                Сброс пароля
+                <br>
+                Войти
+                <br>
+                Регистрация
+            </span>
+        </button>
+    </form>
+</div>
+<script>
+    window.addEventListener('DOMContentLoaded', function() {
+    var overlay = document.getElementById('overlay');
+    var popup = document.getElementById('popup');
+    var loginForm = document.getElementById('loginForm');
+
+    // функция открытия попап окна
+    function openPopup() {
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
+    }
+
+    // функция закрытия попап окна с анимацией
+    function closePopupWithAnimation() {
+        overlay.style.animation = 'overlayFadeOut 0.3s ease forwards';
+        popup.style.animation = 'popupFadeOut 0.3s ease forwards';
+
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            popup.style.display = 'none';
+            overlay.style.animation = '';
+            popup.style.animation = '';
+        }, 300);
+    }
+
+    // добавляем обработчик события для открытия попапа
+    var popupLink = document.querySelector('.popup-link');
+    popupLink.addEventListener('click', function() {
+        openPopup();
+    });
+
+    // добавляем обработчик события для оверлея и кнопки закрытия
+    overlay.addEventListener('click', function(event) {
+        if (event.target === overlay) {
+            closePopupWithAnimation();
+        }
+    });
+
+    // Обработчик события отправки формы
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Отменяем стандартное поведение формы
+
+        var usernameInput = document.getElementById('username').value;
+        var passwordInput = document.getElementById('password').value;
+
+        // Создаем объект с данными для отправки
+        var data = {
+            username: usernameInput,
+            password: passwordInput,
+        };
+
+        // Отправляем POST-запрос на /login
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    // Действия после успешной обработки запроса
+                    closePopupWithAnimation(); // Закрываем попап окно
+                    window.location.href = '/orders';
+                } else {
+                    // Действия при ошибке обработки запроса
+                    response.json().then(errorData => {
+                        console.error('Ошибка:', errorData.message);
+                    });
+                }
+            });
+    });
+});
+</script>
+</body>
+</html>

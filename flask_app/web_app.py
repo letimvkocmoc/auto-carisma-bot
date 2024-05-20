@@ -17,7 +17,7 @@ app.secret_key = os.getenv('FLASK_SECRET_KEY')
 
 @app.route('/')
 def index_page():
-    return render_template('index1.html')
+    return render_template('super_new_index.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Параллакс эффект</title>
+  <style>
+    /* Установка высоты контейнера */
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Добавление фонового изображения и установка размеров */
+    .parallax-container {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Добавление прозрачности к тексту на фоне */
+    .parallax-content {
+      background-color: rgba(255, 255, 255, 0.6);
+      background-image: url("https://image.winudf.com/v2/image1/Y29tLmhtYmwubGl2ZS53YWxscGFwZXJzLndhbGxwYXBlci5zY3JlZW4udGhlbWVfc2NyZWVuXzBfMTcwMzg1NTU2M18wOTI/screen-0.webp?fakeurl=1&type=.webp");
+      padding: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Установка отступа сверху для следующего секционного элемента */
+    .next-section {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div class="parallax-container">
+    <div class="parallax-content">
+      <h1>Добро пожаловать!</h1>
+      <p>Это пример страницы со стильным параллакс эффектом.</p>
+    </div>
+  </div>
+
+  <section class="next-section">
+    <!-- Здесь может быть ваш контент для следующей секции -->
+  </section>
+
+  <!-- Добавьте еще несколько секций, если нужно -->
+
+  <script>
+    window.addEventListener('scroll', function() {
+      const parallax = document.querySelector('.parallax-container');
+      let offset = window.pageYOffset;
+      parallax.style.backgroundPositionY = offset * 0.7 + 'px'; // Измените значение коэффициента для более быстрого или медленного движения
+    });
+  </script>
+</body>
+</html>
