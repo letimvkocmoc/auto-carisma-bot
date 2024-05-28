@@ -36,6 +36,7 @@
         justify-content: center;
         list-style-type: none;
         margin: auto;
+        font-weight: 600;
     }
 
     nav ul li {
@@ -55,13 +56,13 @@
 
     .main-top-container {
         display: flex;
-        height: 800px;
+        height: 600px;
     }
 
     .left-top-container {
         justify-content: left;
         margin: auto;
-        transform: translateY(-40%);
+        transform: translateY(-20%);
     }
 
     .left-top-container-text-n1 {
@@ -71,18 +72,43 @@
 
     .left-top-container-text-n2 {
         margin-top: 10px;
+        width: 600px;
+        text-indent: 20px;
+        text-align: justify;
     }
 
     .left-top-container-buttons button {
         margin-top: 40px;
+        padding: 10px;
         width: 160px;
-        height: 40px;
+        height: 50px;
         border: #d500d5 3px solid;
         border-radius: 1rem;
         background-color: #d500d5;
         color: white;
         cursor: pointer;
     }
+
+    .button2:after {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 200px;
+  margin-left: 60px;
+  background: #fff;
+  opacity: 0.5;
+  position: absolute;
+  left: -40px;
+  top: -100px;
+  z-index: 1;
+  transform: rotate(45deg);
+  transition: all 0.1s;
+  animation-name: slideme;
+  animation-duration: 3s;
+  animation-delay: 0.05s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
 
     .left-top-container-social {
         display: flex;
@@ -102,7 +128,7 @@
         color: white;
         text-align: center;
         padding: 10px;
-        transform: translateY(-250%);
+        transform: translateY(-180%);
         outline: 1px solid rgba(255, 255, 255, 0.51);
     }
 
@@ -119,7 +145,7 @@
         text-align: center;
         padding: 15px;
         margin-top: 10px;
-        transform: translateY(-60%);
+        transform: translateY(-40%);
         outline: 1px solid rgba(255, 255, 255, 0.51);
     }
 
@@ -128,7 +154,8 @@
         font-size: 16px;
         font-weight: 200;
         flex: 1;
-        text-align: left;
+        text-align: justify;
+        text-indent: 20px;
     }
 
     .right-top-container-review-n1-profile {
@@ -154,7 +181,7 @@
         text-align: center;
         padding: 15px;
         margin-top: 10px;
-        transform: translateY(-60%);
+        transform: translateY(-40%);
         outline: 1px solid rgba(255, 255, 255, 0.51);
     }
 
@@ -163,7 +190,8 @@
         font-size: 16px;
         font-weight: 200;
         flex: 1;
-        text-align: left;
+        text-align: justify;
+        text-indent: 20px;
     }
 
     .right-top-container-review-n2-profile {
@@ -181,40 +209,61 @@
         margin-top: -15px;
     }
 
+    .main-middle-container {
+        background: radial-gradient(circle, #9c00ea 0%, #cd1aff 0%, rgba(232, 26, 255, 0.3) 50%,hsla(0,0%,100%,0) 80%) no-repeat;
+        color: white;
+        background-position-y: -200px;
+    }
+
     .middle-container {
         height: 200px;
         display: flex;
-        backdrop-filter: blur(10px);
     }
 
     .middle-container-left {
         justify-content: left;
+        width: 500px;
+        height: 300px;
         margin: auto;
+        padding: 20px;
+        border-radius: 1rem;
+        border: 1px solid white;
+        text-align: center;
     }
 
     .middle-container-center {
         justify-content: center;
+        width: 500px;
+        height: 300px;
         margin: auto;
+        padding: 20px;
+        border-radius: 1rem;
+        border: 1px solid white;
+        text-align: center;
     }
 
     .middle-container-right {
         justify-content: right;
+        width: 500px;
+        height: 300px;
         margin: auto;
+        padding: 20px;
+        border-radius: 1rem;
+        border: 1px solid white;
+        text-align: center;
     }
 
     .popup {
     display: none;
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    left: 40%;
     background-color: #282828;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     z-index: 9999;
     animation: popupFadeIn 0.5s ease forwards;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     margin-top: 0;
     margin-left: 0;
@@ -389,6 +438,21 @@
         opacity: 0;
     }
 }
+
+@keyframes slideme {
+    0% {
+        left: -30px;
+        margin-left: 0px;
+    }
+    30% {
+        left: 110%;
+        margin-left: 80px;
+    }
+    100% {
+        left: 110%;
+        margin-left: 80px;
+    }
+}
 </style>
 <body>
 <header>
@@ -401,7 +465,7 @@
             <ul>
                 <li><a href="#">Главная</a></li>
                 <li><a href="#">О нас</a></li>
-                <li><a href="#">Почему мы?</a></li>
+                <li><a href="#why_us">Почему мы?</a></li>
                 <li><a href="#">Контакты</a></li>
                 <li style="border: 3px #d500d5 solid; border-radius: 1rem; background-color: #d500d5; color: black; padding: 5px;"><a href="#">Оставить заявку</a></li>
                 <li><button class="login-btn popup-link">Войти и регистрация</button></li>
@@ -419,11 +483,11 @@
             <span>Осуществи свою мечту вместе с </span><span style="color: #d500d5;">нами</span><span>.</span>
         </div>
         <div class="left-top-container-text-n2">
-            <span>Текст № 2</span>
+            <span>Наша компания является лидером в сфере поиска и доставки автомобилей из Японии. Мы предлагаем высококачественные услуги по доступным ценам. Наши специалисты имеют многолетний опыт и помогут вам с выбором и приобретением автомобиля вашей мечты.</span>
         </div>
         <div class="left-top-container-buttons">
             <button>Кнопка № 1</button>
-            <button>Кнопка № 2</button>
+            <button class="button2" style="background: none; margin-left: 10px; position: relative; overflow:hidden;">Кнопка № 2</button>
         </div>
         <div class="left-top-container-social">
             <a href="#"><img src="../static/images/instagram.png" style="width: 25px; height: 25px; padding: 10px;"></a>
@@ -481,15 +545,22 @@
         </div>
     </div>
 </div>
-<div class="middle-container">
-    <div class="middle-container-left">
-        <span>Текст № 1</span>
+<div class="main-middle-container">
+    <div style="background: black; height: 120px;"></div>
+    <div>
+        <section id="why_us" style="padding: 50px; text-align: center; text-transform: uppercase; font-size: 32px; font-weight: 600">Почему мы?</section>
     </div>
-    <div class="middle-container-center">
-        <span>Текст № 2</span>
-    </div>
-    <div class="middle-container-right">
-        <span>Текст № 3</span>
+    <div style="background: black; height: 20px;"></div>
+    <div class="middle-container">
+        <div class="middle-container-left">
+            <img src="../static/images/Lock-PNG-Image.png" style="width: 100px; height: 100px;">
+        </div>
+        <div class="middle-container-center">
+            <span>Текст № 2</span>
+        </div>
+        <div class="middle-container-right">
+            <span>Текст № 3</span>
+        </div>
     </div>
 </div>
 <div class="overlay" id="overlay"></div>
