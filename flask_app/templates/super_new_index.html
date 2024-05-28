@@ -5,20 +5,18 @@
     <title>Auto Carisma</title>
 </head>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
     body {
         width: 100%;
         height: 1200px;
-        font-family: 'Inter', sans-serif;
         font-size: 16px;
+        font-family: 'Mulish', sans-serif;
         margin: 0;
         padding: 0;
-        background-image: url("https://sportishka.com/uploads/posts/2023-12/1701911902_sportishka-com-p-temnie-oboi-mashini-instagram-43.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
         color: white;
-        backdrop-filter: blur(2px);
+        background: url("../static/images/background2.jpg") no-repeat;
     }
 
     .header-container {
@@ -30,8 +28,8 @@
     .logo {
         justify-content: left;
         margin: auto;
-        font-size: 36px;
-        font-weight: 600;
+        font-size: 48px;
+        font-weight: 800;
     }
 
     .nav-menu {
@@ -63,6 +61,7 @@
     .left-top-container {
         justify-content: left;
         margin: auto;
+        transform: translateY(-40%);
     }
 
     .left-top-container-text-n1 {
@@ -103,6 +102,8 @@
         color: white;
         text-align: center;
         padding: 10px;
+        transform: translateY(-250%);
+        outline: 1px solid rgba(255, 255, 255, 0.51);
     }
 
     .right-top-container {
@@ -110,25 +111,74 @@
         margin: auto;
     }
 
-    .right-top-container-review-n1 {
-        width: 400px;
-        height: 150px;
-        background: rgba(44, 44, 44, 0.46);
+        .right-top-container-review-n1 {
+        width: 500px;
+        background: rgba(23, 23, 23, 0.7);
         border-radius: 1rem;
         color: white;
         text-align: center;
-        padding: 10px;
+        padding: 15px;
+        margin-top: 10px;
+        transform: translateY(-60%);
+        outline: 1px solid rgba(255, 255, 255, 0.51);
+    }
+
+
+    .right-top-container-review-n1-text {
+        font-size: 16px;
+        font-weight: 200;
+        flex: 1;
+        text-align: left;
+    }
+
+    .right-top-container-review-n1-profile {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .right-top-container-review-n1-profile-image {
+        margin-right: 10px;
+    }
+
+    .right-top-container-review-n1-profile-stars {
+        text-align: left;
+        margin-top: -15px;
     }
 
     .right-top-container-review-n2 {
-        width: 400px;
-        height: 150px;
-        background: rgba(44, 44, 44, 0.46);
+        width: 500px;
+        background: rgba(23, 23, 23, 0.7);
         border-radius: 1rem;
         color: white;
         text-align: center;
-        padding: 10px;
+        padding: 15px;
         margin-top: 10px;
+        transform: translateY(-60%);
+        outline: 1px solid rgba(255, 255, 255, 0.51);
+    }
+
+
+    .right-top-container-review-n2-text {
+        font-size: 16px;
+        font-weight: 200;
+        flex: 1;
+        text-align: left;
+    }
+
+    .right-top-container-review-n2-profile {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .right-top-container-review-n2-profile-image {
+        margin-right: 10px;
+    }
+
+    .right-top-container-review-n2-profile-stars {
+        text-align: left;
+        margin-top: -15px;
     }
 
     .middle-container {
@@ -262,7 +312,7 @@
     transition: all .2s ease-in-out;
 }
 .login-input-form button {
-    background: #9607cf;
+    background: #d500d5;
     border: none;
     border-radius: 8px;
     color: #fff;
@@ -353,7 +403,7 @@
                 <li><a href="#">О нас</a></li>
                 <li><a href="#">Почему мы?</a></li>
                 <li><a href="#">Контакты</a></li>
-                <li style="border: 3px purple solid; border-radius: 1rem; background-color: purple; color: black; padding: 5px;"><a href="#">Оставить заявку</a></li>
+                <li style="border: 3px #d500d5 solid; border-radius: 1rem; background-color: #d500d5; color: black; padding: 5px;"><a href="#">Оставить заявку</a></li>
                 <li><button class="login-btn popup-link">Войти и регистрация</button></li>
             </ul>
         </nav>
@@ -365,8 +415,8 @@
 </header>
 <div class="main-top-container">
     <div class="left-top-container">
-        <div class="left-top-container-text-n1">
-            <span>Текст № 1</span>
+        <div class="left-top-container-text-n1" style="font-size: 56px; width: 600px;">
+            <span>Осуществи свою мечту вместе с </span><span style="color: #d500d5;">нами</span><span>.</span>
         </div>
         <div class="left-top-container-text-n2">
             <span>Текст № 2</span>
@@ -387,34 +437,45 @@
                 <span>Наша команда</span>
             </div>
             <div class="center-top-container-subcontainer-image">
-                <span>Фото</span>
+                <img src="../static/images/klushenkov.jpg" style="border-radius: 50%; width: 70px; height: 70px;">
+                <img src="../static/images/klushenkov.jpg" style="border-radius: 50%; width: 70px; height: 70px; transform: translateX(-50%)">
             </div>
         </div>
     </div>
     <div class="right-top-container">
         <div class="right-top-container-review-n1">
             <div class="right-top-container-review-n1-text">
-                <span>Текст № 1</span>
+                <span>Я заказал автомобиль из Японии через эту компанию, и мой опыт был отличным! Они предоставили мне полную информацию о процессе доставки, помогли выбрать подходящий вариант и организовали все документы. Автомобиль прибыл в отличном состоянии, как и обещали. Я очень доволен и рекомендую эту компанию всем, кто хочет заказать авто из Японии.</span>
             </div>
             <div class="right-top-container-review-n1-profile">
                 <div class="right-top-container-review-n1-profile-image">
-                    <span>Фото № 1</span>
+                    <img src="../static/images/klushenkov.jpg" style="border-radius: 50%; width: 50px; height: 50px;">
                 </div>
                 <div class="right-top-container-review-n1-profile-stars">
-                    <span>Оценка</span>
+                    <span>Евгений Клушенков</span><br>
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
                 </div>
             </div>
         </div>
         <div class="right-top-container-review-n2">
             <div class="right-top-container-review-n2-text">
-                <span>Текст № 2</span>
+                <span>Эта компания по заказу автомобилей из Японии превзошла мои ожидания! Процесс заказа был легким и прозрачным, менеджеры всегда были на связи и оперативно отвечали на все мои вопросы. Мой автомобиль был доставлен вовремя и в идеальном состоянии. Я благодарен им за отличный сервис и качественную работу.</span>
             </div>
             <div class="right-top-container-review-n2-profile">
                 <div class="right-top-container-review-n2-profile-image">
-                    <span>Фото № 2</span>
+                    <img src="../static/images/klushenkov.jpg" style="border-radius: 50%; width: 50px; height: 50px;">
                 </div>
                 <div class="right-top-container-review-n2-profile-stars">
-                    <span>Оценка</span>
+                    <span>Евгений Клушенков</span><br>
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
+                    <img src="../static/images/star.png" style="width: 10px; height: 10px">
                 </div>
             </div>
         </div>
